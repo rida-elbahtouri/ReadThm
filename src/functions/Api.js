@@ -8,3 +8,18 @@ export const getAllblogs = () => {
     })
 }
 
+export const getUser = (token) => {
+    Axios.get(`${baseUrl}/users/profile`, {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+      }
+    )
+}
+
+export const login = ({email,password}) => {
+    return Axios.post(`${baseUrl}/users/login`, {
+        email:email,
+        password:password
+    })
+}
