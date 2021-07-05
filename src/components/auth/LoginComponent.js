@@ -1,8 +1,13 @@
 import {login} from '../../functions/Api'
 import { useState } from 'react'
-export default function LoginComponent() {
+import { connect } from 'react-redux';
+import { getToken } from '../../actions' 
 
 
+
+const LoginComponent = (props) => {
+
+    console.log(props)
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
    
@@ -15,11 +20,13 @@ export default function LoginComponent() {
     }
 
     const handleSubmit = (e) => {
+        const getUserToken = props.getToken
         e.preventDefault();
         login({email, password}).then(res => {
-            console.log(res)
+            console.log(res.data.token)
+            getUserToken(res.data.token)
         }).catch(err=>{
-            console.log(err.response.data.message)
+            console.log(err)
         })
     }
     return (
@@ -32,3 +39,16 @@ export default function LoginComponent() {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    token: state.Token,
+  });
+  
+const mapDispatchToProps = dispatch => ({
+    getToken: token => {
+      dispatch(getToken(token));
+    },
+});
+  
+  
+export default connect(mapStateToProps,mapDispatchToProps)(LoginComponent);
