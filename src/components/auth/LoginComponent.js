@@ -26,15 +26,19 @@ const LoginComponent = (props) => {
             console.log(res.data.token)
             getUserToken(res.data.token)
         }).catch(err=>{
-            console.log(err)
+            console.log(err.response.data.message)
         })
     }
     return (
-        <div>
+        <div className="auth-form">
             <form onSubmit={handleSubmit}>
+                <label>Email</label>
                 <input onChange={emailChange} type="email" placeholder="email" required />
+                <label>Password</label>
                 <input onChange={passwordChange} type="password" placeholder="password" required />
-                <input type="submit" value="submit" />
+                <input type="submit" className="green-btn btn" value="Sign in" />
+
+                <p className="sub-text fs-5">Click “Sign In” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</p>
             </form>
         </div>
     )

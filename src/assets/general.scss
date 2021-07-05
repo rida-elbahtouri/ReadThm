@@ -1,0 +1,89 @@
+@import './colors.scss';
+
+$basefont:20px;
+.auth-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 240, 0.432);
+}
+
+.auth-form form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: $white;
+    padding: 50px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    min-width:500px ;
+}
+.auth-form form label {
+    font-size: 26px;
+    font-weight: bold;
+}
+.auth-form form input {
+    padding: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    border-bottom: 1px solid $gray;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sub-text {
+    color: $gray;
+}
+
+//* 2.5;
+//$h2-font-size:                $font-size-base * 2;
+//$h3-font-size:                $font-size-base * 1.75;
+//$h4-font-size:                $font-size-base * 1.5;
+//$h5-font-size:                $font-size-base * 1.25;
+.fs-1 {
+    font-size:$basefont*2.5;
+}
+.fs-2 {
+    font-size:$basefont*2;
+}
+.fs-3 {
+    font-size:$basefont*1.5;
+}
+.fs-4 {
+    font-size:$basefont*1;
+}
+.fs-5 {
+    font-size:$basefont/2;
+}
+.fs-6 {
+    font-size:$basefont/3;
+}
+
+.d-block {
+        display: block;
+}
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.green-btn {
+   background-color: $green;
+}
+
+.green-btn:hover {
+    background-color: darken($green,10%) ;
+    color: white;
+ }
+ 
