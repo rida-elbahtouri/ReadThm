@@ -1,13 +1,12 @@
-import { Link , Switch ,Route} from 'react-router-dom';
+import { Switch ,Route} from 'react-router-dom';
 import { useState } from 'react';
 
 
 import LoginComponent from './components/auth/LoginComponent';
-import {getAllblogs} from './functions/Api'
+
 import Home from './components/home'
 import NavBar from './components/NavBar';
 function App() {
-  getAllblogs()
   const [isActive, setIsActive] = useState(false)
   const authUser = () => {
     setIsActive(!isActive)
