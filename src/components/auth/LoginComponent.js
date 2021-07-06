@@ -7,7 +7,6 @@ import { getToken } from '../../actions'
 
 const LoginComponent = (props) => {
 
-    console.log(props)
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
    
