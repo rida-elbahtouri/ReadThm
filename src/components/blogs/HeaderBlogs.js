@@ -35,8 +35,8 @@ export default function HeaderBlogs(props) {
         </div>
         <div className="trending-blogs">
             {renderThreeBlogs(blogs.slice(2))}
-            <div>
-                See more
+            <div className="Seemore-link">
+                See more -&gt;
             </div>
         </div>
         </div>
