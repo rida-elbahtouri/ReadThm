@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import './variables.scss';
 
 .headerblogs {
     display: flex;
@@ -11,6 +11,7 @@
 
         .blog-content {
             width: 39%;
+            padding: 5px;
         }
         img {
             width: 59%;
@@ -57,11 +58,67 @@
         .card-img {
             width: 20%;
             img {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             }
         }
     }
    
+}
+
+
+
+@media only screen and (max-width: $tablets) {
+    .headerblogs {
+            max-height: 100%; 
+        .most-readed {
+        width: 49%;
+           flex-direction: column-reverse;
+           .blog-content ,img {
+               width: 100%;
+           }
+           img {
+               max-height: 500px;
+           }
+        }
+        .second-most-readed {
+            width: 49%;
+            img {
+                max-height:500px;
+            }
+        }
+    }
+    .trending-blogs {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+
+}
+
+@media only screen and (max-width:  $phones) {
+    .headerblogs {
+        flex-direction: column;
+    .most-readed {
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
+        width: 100%;
+       .blog-content ,img {
+           width: 100%;
+       }
+       img {
+           max-height: 100%;
+       }
+    }
+    .second-most-readed {
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
+        width:100%;
+        img {
+            max-height:100%;
+        }
+    }
+}
+    
+    .trending-blogs {
+        grid-template-columns: 1fr;
+    }
 }

@@ -21,7 +21,7 @@ export default function HeaderBlogs(props) {
              <h1>{blogs[0].title}</h1>   
                 <span>By : {blogs[0].auther.fullname}</span>  
 
-            <p> {blogs[0].content} </p>
+            <p> {blogs[0].content.slice(0,500)}... </p>
             </div>
             <img src="https://images.pexels.com/photos/6146737/pexels-photo-6146737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
             </div>
