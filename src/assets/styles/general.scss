@@ -1,0 +1,22 @@
+@import './colors.scss';
+@import './helpers/btns.scss';
+@import './helpers/general.scss';
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box !important;
+}
+.content {
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 1400px;
+}
+
+
+

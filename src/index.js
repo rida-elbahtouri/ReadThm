@@ -11,7 +11,7 @@ import { createStore } from 'redux';
 
 import rootReducer from './reducers/index';
 import App from './App';
-import './assets/general.scss';
+import './assets/styles/general.scss';
 
 
 const store = createStore(rootReducer);

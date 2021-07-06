@@ -8,6 +8,8 @@ import HeaderBlogs from './blogs/HeaderBlogs'
 import BlogsForYou from './blogs/BlogsForYou'
 import BlogsTrending from './blogs/BlogsTrending'
 
+import '../assets/styles/home.scss';
+
 const Home=(props) => {
 
 

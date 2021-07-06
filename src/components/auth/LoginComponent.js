@@ -2,7 +2,7 @@ import {login} from '../../functions/Api'
 import { useState } from 'react'
 import { connect } from 'react-redux';
 import { getToken } from '../../actions' 
-
+import '../../assets/styles/auth.scss'
 
 
 const LoginComponent = (props) => {

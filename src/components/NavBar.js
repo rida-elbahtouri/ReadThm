@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import { Link} from 'react-router-dom';
 import {getUser} from '../functions/Api';
 import {getUserData} from '../actions';
+
+import '../assets/styles/nav.scss'
  const NavBar = (props) => {
     console.log(props)
 
