@@ -82,7 +82,15 @@ body {
         transform: translateY(-50%);
     }
 }
+ .user-box {
+ 
+    max-width: 50px;
 
+     img {
+         width: 100%;
+         border-radius: 50%;
+     }
+ }
 .fs-1 {
     font-size:$basefont*2.5;
 }

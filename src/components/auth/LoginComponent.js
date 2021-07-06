@@ -22,7 +22,7 @@ const LoginComponent = (props) => {
         const getUserToken = props.getToken
         e.preventDefault();
         login({email, password}).then(res => {
-            console.log(res.data.token)
+            props.authUser()
             getUserToken(res.data.token)
         }).catch(err=>{
             console.log(err.response.data.message)

@@ -16,7 +16,7 @@ function App() {
 
   const wantToAuth = () => {
     if(isActive){
-      return <LoginComponent />
+      return <LoginComponent authUser={authUser} />
     }
   }
   return (

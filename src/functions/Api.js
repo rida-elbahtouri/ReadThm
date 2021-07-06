@@ -9,7 +9,7 @@ export const getAllblogs = () => {
 }
 
 export const getUser = (token) => {
-    Axios.get(`${baseUrl}/users/profile`, {
+    return Axios.get(`${baseUrl}/users/profile`, {
         headers: {
           'Authorization': `Bearer ${token}` 
         }
