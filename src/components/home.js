@@ -28,7 +28,7 @@ const Home=(props) => {
             <div>
             <HeaderBlogs blogs={blogs.slice(0,5)} />
             
-            <div className="flex jus-btween">
+            <div className="grid two-grid blogs-for-you-trend">
                 <BlogsForYou blogs = {blogs.slice(0,5)} />
                 <BlogsTrending blogs = {blogs.slice(0,5)} />
             </div>

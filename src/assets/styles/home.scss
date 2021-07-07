@@ -66,15 +66,95 @@
     }
    
 }
+.blogs-for-you-trend {
+    margin-top: 20px;
+}
 
+.blogs-for-you-card {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3,1fr);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+    align-items: center;
+    img {
+        width: 100%;
+        max-height: 200px;
+    }
+    .blog-card-for-you-content {
+        grid-column: 2/4;
+
+        h2 {
+            margin: 0;
+            border-bottom: 2px solid black;
+            padding-bottom: 5px;
+        }
+
+        .blog-card-user {
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+            grid-gap: 10px;
+            margin-top: 10px;
+            align-items: center;
+            img{
+                width: 100%;
+                border-radius: 50%;
+            }
+            h4 {
+                grid-column: 2/-1;
+            }
+        }
+    }
+}
+
+.trending-blogs-cards {
+    border: 1px solid $lightgray;
+    h1 {
+        background-color: $lightgreen;
+        padding: 30px;
+    }
+}
+
+.blog-trending-card {
+    display: grid;
+    grid-template-columns: repeat(8,1fr);
+    align-items: center;
+    margin: 30px 0;
+    grid-gap: 15px;
+    img {
+        width: 100%;
+        border-radius: 50%;
+        grid-column: 2/4;
+        max-height: 180px;
+    }
+    .blog-card-content {
+        grid-column: 4/-1; 
+      .blog-card-user {
+        display: grid;
+        grid-template-columns: repeat(8,1fr);
+        grid-gap: 10px;
+        align-items: center;
+        img{
+            width: 100%;
+            border-radius: 50%;
+            grid-column: 1/2;
+        }
+        h4 {
+            grid-column: 2/-1;
+        }
+    }
+    }
+ 
+}
 
 
 @media only screen and (max-width: $tablets) {
     .headerblogs {
             max-height: 100%; 
         .most-readed {
-        width: 49%;
-           flex-direction: column-reverse;
+            width: 49%;
+            flex-direction: column-reverse;
            .blog-content ,img {
                width: 100%;
            }
