@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function BlogForYouCard({blog}) {
-   console.log(blog)
     return (
         <div className="blogs-for-you-card">
             <img src="https://source.unsplash.com/random" />

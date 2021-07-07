@@ -5,8 +5,6 @@ import {getUserData} from '../actions';
 
 import '../assets/styles/nav.scss'
  const NavBar = (props) => {
-    console.log(props)
-
     if(props.token && !props.user) {
         getUser(props.token).then(user =>{
             props.getUserData(user.data)

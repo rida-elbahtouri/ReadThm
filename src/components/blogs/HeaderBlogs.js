@@ -1,10 +1,8 @@
 import React from 'react'
 import BlogCard from './BlogCard'
-
+import {BlogimageRender} from '../../functions/checkPhoto'
 
 export default function HeaderBlogs(props) {
-    console.log(props.blogs)
-
     const renderThreeBlogs = (blogs) => {
         const res = blogs.map(blog=>{
             return <BlogCard blog = {blog} />
@@ -23,10 +21,10 @@ export default function HeaderBlogs(props) {
 
             <p> {blogs[0].content.slice(0,500)}... </p>
             </div>
-            <img src="https://images.pexels.com/photos/6146737/pexels-photo-6146737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+            <img src={BlogimageRender(blogs[0])} />
             </div>
             <div className="second-most-readed">
-            <img src="https://images.pexels.com/photos/6146737/pexels-photo-6146737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+            <img src={BlogimageRender(blogs[1])} />
             <h1>{blogs[1].title}</h1>   
                 <span>By : {blogs[1].auther.fullname}</span>  
 

@@ -1,10 +1,12 @@
 import React from 'react'
-
+import {BlogimageRender} from '../../functions/checkPhoto'
 export default function BlogTrendingCard({blog,index}) {
+
+   
     return (
         <div className="blog-trending-card">
          <h2 className="text-green">#{index+1}</h2>
-        <img src="https://source.unsplash.com/random" />
+        <img src={BlogimageRender(blog)} />
        <div className="blog-card-content">
            <h2>{blog.title}</h2>
           <div className="blog-card-user">
