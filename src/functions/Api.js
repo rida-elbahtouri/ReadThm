@@ -21,3 +21,11 @@ export const login = ({email,password}) => {
         password:password
     })
 }
+
+export const signup = ({fullname,email,password}) => {
+    return Axios.post(`${baseUrl}/users/`, {
+        fullname:fullname,
+        email:email,
+        password:password
+    })
+}

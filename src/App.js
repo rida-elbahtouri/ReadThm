@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 import LoginComponent from './components/auth/LoginComponent';
-
+import SignUpComponent from './components/auth/SignUpComponent';
 import Home from './components/home'
 import NavBar from './components/NavBar';
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
   const wantToAuth = () => {
     if(isActive){
-      return <LoginComponent authUser={authUser} />
+      return <SignUpComponent authUser={authUser} />
     }
   }
   return (
