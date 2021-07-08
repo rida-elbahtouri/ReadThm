@@ -2,8 +2,9 @@ import { Switch ,Route} from 'react-router-dom';
 import { useState } from 'react';
 
 
-import LoginComponent from './components/auth/LoginComponent';
-import SignUpComponent from './components/auth/SignUpComponent';
+// import LoginComponent from './components/auth/LoginComponent';
+// import SignUpComponent from './components/auth/SignUpComponent';
+import AuthUserCompoenent from './components/auth/AuthUser';
 import Home from './components/home'
 import NavBar from './components/NavBar';
 function App() {
@@ -15,7 +16,7 @@ function App() {
 
   const wantToAuth = () => {
     if(isActive){
-      return <SignUpComponent authUser={authUser} />
+      return <AuthUserCompoenent authUser={authUser} />
     }
   }
   return (

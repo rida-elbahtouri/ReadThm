@@ -39,8 +39,9 @@ const SignUpComponent = (props) => {
 
     }
     return (
-        <div className="auth-form">
+        // <div className="auth-form">
             <form onSubmit={handleSubmit}>
+                <h1 className="text-green">Sign Up</h1>
                 <label>Full Name</label>
                 <input onChange={fullnameChange} type="text" placeholder="Full Name" required />
                 <label>Email</label>
@@ -52,8 +53,10 @@ const SignUpComponent = (props) => {
                 <input type="submit" className="green-btn btn" value="Sign up" />
 
                 <p className="sub-text fs-5">Click “Sign Up” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</p>
+
+                <p>Already have an account <span onClick={()=>{props.SwitchForm('login')}} className="text-green clickable">sign in</span></p>
             </form>
-        </div>
+        // </div>
     )
 }
 

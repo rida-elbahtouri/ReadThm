@@ -41,7 +41,9 @@ $basefont:20px;
  .bg-black {
      background-color: $black;
  }
-
+.clickable {
+    cursor: pointer;
+}
  .grid {
     display: grid;
 }

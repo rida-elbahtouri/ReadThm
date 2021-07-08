@@ -10,7 +10,7 @@ const LoginComponent = (props) => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
    
-
+    console.log(props)
     const emailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -29,8 +29,9 @@ const LoginComponent = (props) => {
         })
     }
     return (
-        <div className="auth-form">
+        // <div className="auth-form">
             <form onSubmit={handleSubmit}>
+                <h1 className="text-green">Login</h1>
                 <label>Email</label>
                 <input onChange={emailChange} type="email" placeholder="email" required />
                 <label>Password</label>
@@ -38,8 +39,10 @@ const LoginComponent = (props) => {
                 <input type="submit" className="green-btn btn" value="Sign in" />
 
                 <p className="sub-text fs-5">Click “Sign In” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</p>
+
+                <p>You don't have an account want to <span onClick={()=>{props.SwitchForm('signup')}} className="text-green clickable">sign up</span></p>
             </form>
-        </div>
+        // </div>
     )
 }
 
