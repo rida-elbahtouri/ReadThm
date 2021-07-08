@@ -21,10 +21,10 @@ export default function HeaderBlogs(props) {
 
             <p> {blogs[0].content.slice(0,500)}... </p>
             </div>
-            <img src={BlogimageRender(blogs[0])} />
+           {BlogimageRender(blogs[0])}
             </div>
             <div className="second-most-readed">
-            <img src={BlogimageRender(blogs[1])} />
+           {BlogimageRender(blogs[1])}
             <h1>{blogs[1].title}</h1>   
                 <span>By : {blogs[1].auther.fullname}</span>  
 

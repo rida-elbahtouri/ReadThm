@@ -1,9 +1,9 @@
 import React from 'react'
-
+import {BlogimageRender} from '../../functions/checkPhoto'
 export default function BlogForYouCard({blog}) {
     return (
         <div className="blogs-for-you-card">
-            <img src="https://source.unsplash.com/random" />
+           {BlogimageRender(blog)}
             <div className="blog-card-for-you-content">
             <h2>{blog.title}</h2>
 

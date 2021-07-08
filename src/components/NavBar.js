@@ -2,14 +2,18 @@ import { connect } from 'react-redux';
 import { Link} from 'react-router-dom';
 import {getUser} from '../functions/Api';
 import {getUserData} from '../actions';
+import {UserAvatarRender} from '../functions/checkPhoto';
+
 
 import '../assets/styles/nav.scss'
+
+
  const NavBar = (props) => {
     if(props.token && !props.user) {
         getUser(props.token).then(user =>{
             props.getUserData(user.data)
         }).catch(e=>{
-            console.log(e)
+            console.log(e.response)
         })
     }
 
@@ -19,7 +23,7 @@ import '../assets/styles/nav.scss'
             return (
                 <div className="right-position user-box">
                     <Link to="/profile">
-                        <img src={`http://localhost:3000/users/${user.id}/avatar`} />
+                       {UserAvatarRender(user)}
                     </Link>
                 </div>
             )
