@@ -1,0 +1,18 @@
+.btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 2px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.green-btn {
+    background-color: $green;
+}
+ 
+
+.green-btn:hover {
+     background-color: darken($green,10%) ;
+     color: white;
+}

@@ -1,0 +1,58 @@
+@import '../variables.scss';
+
+$basefont:20px;
+.sub-text {
+    color: $gray;
+}
+
+.text-green {
+    color: $green;
+}
+.m-0 {
+    margin: 0;
+}
+.p-0 {
+    padding: 0;
+}
+
+.fs-1 {
+    font-size:$basefont*2.5;
+}
+.fs-2 {
+    font-size:$basefont*2;
+}
+.fs-3 {
+    font-size:$basefont*1.5;
+}
+.fs-4 {
+    font-size:$basefont*1;
+}
+.fs-5 {
+    font-size:$basefont*0.85;
+}
+.fs-6 {
+    font-size:$basefont*0.75;
+}
+
+.d-block {
+        display: block;
+}
+
+ .bg-black {
+     background-color: $black;
+ }
+.clickable {
+    cursor: pointer;
+}
+ .grid {
+    display: grid;
+}
+.two-grid {
+    grid-template-columns: repeat(2,1fr);
+}
+
+@media only screen and (max-width: $tablets) {
+.two-grid {
+    grid-template-columns: 1fr;
+}
+}
