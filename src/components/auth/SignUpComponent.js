@@ -29,29 +29,29 @@ const SignUpComponent = (props) => {
     }
     const showPasswordError = () =>{
         if(passwordError){
-            return <p>{passwordError}</p>
+            return <p className="alert-danger">{passwordError}</p>
         }
     }
     const showEmailError = () => {
         if(emailError){
-            return <p>{emailError}</p>
+            return <p className="alert-danger">{emailError}</p>
         }
+    }
+    const validatePassword = () => {
+        setPasswordError("")
+        if(password.length < 6){
+            setPasswordError("password too short")
+            return false;
+        }else if(password !== passwordconfirmation) {
+            setPasswordError("passwords dosn't match")
+            return false;
+        }
+        return true;
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         const getUserToken = props.getToken
-        setPasswordError("")
-        if(password !== passwordconfirmation) {
-            setPasswordError("passwords dosn't match")
-
-        }
-
-        if(password.length < 6){
-            setPasswordError("password too short")
-        }
-
-        if(passwordError === ""){
-            console.log(passwordError)
+        if(validatePassword()){
              signup({fullname , email, password}).then(res => {
               props.authUser()
               getUserToken(res.data.token)
