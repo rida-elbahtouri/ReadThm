@@ -41,7 +41,7 @@ import '../assets/styles/nav.scss'
     return (
         <div className="navbar">
             <nav>
-            <h1>Medium</h1>
+            <Link to="/"><h1>Medium</h1></Link> 
             {renderHellper(props.user)}
             </nav>
         </div>

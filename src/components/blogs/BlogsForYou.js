@@ -5,7 +5,7 @@ import BlogsForYouCard from './BlogForYouCard'
 export default function BlogsForYou(props) {
     const renderHelper = (blogs) => {
         const res = blogs.map(blog=>{
-            return <BlogsForYouCard blog = {blog} />
+            return <BlogsForYouCard key={blog.id} blog = {blog} />
         })
         return res
     }

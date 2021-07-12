@@ -11,10 +11,8 @@ export default function AuthUser(props) {
     
     const Switchto = () => {
         if(activeComp === "login"){
-            console.log('signin')
             return <LoginComponent authUser={props.authUser} SwitchForm={SwitchForm} />
         } else {
-            console.log('signup')
             return <SignUpComponent authUser={props.authUser} SwitchForm={SwitchForm} />
         }
     }

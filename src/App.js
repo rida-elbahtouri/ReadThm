@@ -1,11 +1,9 @@
 import { Switch ,Route} from 'react-router-dom';
 import { useState } from 'react';
 
-
-// import LoginComponent from './components/auth/LoginComponent';
-// import SignUpComponent from './components/auth/SignUpComponent';
 import AuthUserCompoenent from './components/auth/AuthUser';
-import Home from './components/home'
+import Home from './components/home';
+import UserProfile from './components/UserProfile';
 import NavBar from './components/NavBar';
 function App() {
   const [isActive, setIsActive] = useState(false)
@@ -25,8 +23,9 @@ function App() {
       <div className="content">
        {wantToAuth()}
       <Switch>
-        <Route to="/" component={Home} />
-
+        <Route path="/" exact component={Home} />
+        <Route path="/profile" component={UserProfile} />
+        <Route path="/user/:id" component={UserProfile} />
       </Switch>
       </div>
     </div>

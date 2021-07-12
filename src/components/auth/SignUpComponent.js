@@ -1,9 +1,9 @@
-import {signup} from '../../functions/Api'
+import {signup ,getUser} from '../../functions/Api'
 import { useState } from 'react'
 import { connect } from 'react-redux';
-import { getToken } from '../../actions' 
+import { getToken , getUserData } from '../../actions' 
 import '../../assets/styles/auth.scss'
-
+import { useHistory } from 'react-router';
 
 const SignUpComponent = (props) => {
 
@@ -11,7 +11,10 @@ const SignUpComponent = (props) => {
     const [fullname,setFullname] = useState("")
     const [password,setPassword] = useState("")
     const [passwordconfirmation,setPasswordconfirmation] = useState("")
+    const [passwordError,setPasswordError] = useState("")
+    const [emailError , setEmailError] = useState("")
 
+    const history = useHistory()
     const emailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -24,28 +27,56 @@ const SignUpComponent = (props) => {
     const passwordconfiChange = (e) => {
         setPasswordconfirmation(e.target.value)
     }
-
+    const showPasswordError = () =>{
+        if(passwordError){
+            return <p>{passwordError}</p>
+        }
+    }
+    const showEmailError = () => {
+        if(emailError){
+            return <p>{emailError}</p>
+        }
+    }
     const handleSubmit = (e) => {
-        const getUserToken = props.getToken
         e.preventDefault();
-       
-       
-        signup({fullname , email, password}).then(res => {
-             props.authUser()
-             getUserToken(res.data.token)
-        }).catch(err=>{
-            console.log(err.response.data.message)
-        })
+        const getUserToken = props.getToken
+        setPasswordError("")
+        if(password !== passwordconfirmation) {
+            setPasswordError("passwords dosn't match")
 
+        }
+
+        if(password.length < 6){
+            setPasswordError("password too short")
+        }
+
+        if(passwordError === ""){
+            console.log(passwordError)
+             signup({fullname , email, password}).then(res => {
+              props.authUser()
+              getUserToken(res.data.token)
+             }).catch(err=>{
+             if(err.response.data.message.includes("duplicate key error")){
+                setEmailError("email already exist!! you may want to sign in.")
+             }
+             })
+        }
+    }
+    if(props.token){
+        getUser(props.token).then(user => {
+            props.getUserData(user.data)
+            history.push('/profile')
+        })
     }
     return (
-        // <div className="auth-form">
             <form onSubmit={handleSubmit}>
                 <h1 className="text-green">Sign Up</h1>
                 <label>Full Name</label>
                 <input onChange={fullnameChange} type="text" placeholder="Full Name" required />
+               {showEmailError()}
                 <label>Email</label>
                 <input onChange={emailChange} type="email" placeholder="email" required />
+                {showPasswordError()}
                 <label>Password</label>
                 <input onChange={passwordChange} type="password" placeholder="password" required />
                 <label>Confirm Password</label>
@@ -56,7 +87,6 @@ const SignUpComponent = (props) => {
 
                 <p>Already have an account <span onClick={()=>{props.SwitchForm('login')}} className="text-green clickable">sign in</span></p>
             </form>
-        // </div>
     )
 }
 
@@ -67,6 +97,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getToken: token => {
       dispatch(getToken(token));
+    },
+    getUserData: user => {
+        dispatch(getUserData(user));
     },
 });
   

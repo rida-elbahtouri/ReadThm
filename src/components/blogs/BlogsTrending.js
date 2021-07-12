@@ -4,7 +4,7 @@ export default function BlogsTrending(props) {
     
     const renderHelper = (blogs) => {
         const res = blogs.map((blog, index)=>{
-            return <BlogTrendingCard blog = {blog} index={index} />
+            return <BlogTrendingCard  key={blog.id} blog = {blog} index={index} />
         })
         return res
     }

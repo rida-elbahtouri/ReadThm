@@ -5,7 +5,7 @@ import {BlogimageRender} from '../../functions/checkPhoto'
 export default function HeaderBlogs(props) {
     const renderThreeBlogs = (blogs) => {
         const res = blogs.map(blog=>{
-            return <BlogCard blog = {blog} />
+            return <BlogCard key={blog.id} blog = {blog} />
         })
         return res
     }
