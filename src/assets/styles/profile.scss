@@ -11,16 +11,23 @@
             width: 250px;
             height: 250px;
             margin: 0 auto;
+            padding: 15px;
             img {
                 width: 100%;
                 border-radius: 50%;
             }
         }
         .user-info {
-          padding: 15px;
-          font-size: 20px;
-          display: flex;
-          flex-direction: column;
+            padding: 15px;
+            font-size: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            * {
+                margin-top: 10px;
+            }
+            label {
+              font-weight: bold;
+            }
         }
     }
     .user-blogs-section {

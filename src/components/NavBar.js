@@ -22,6 +22,8 @@ import '../assets/styles/nav.scss'
         if (user){
             return (
                 <div className="right-position user-box">
+                    <Link to="/addblog">New blog</Link>
+                    
                     <Link to="/profile">
                        {UserAvatarRender(user)}
                     </Link>

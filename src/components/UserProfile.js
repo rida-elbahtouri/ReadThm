@@ -49,10 +49,13 @@ const UserProfile =(props)=> {
             {UserAvatarRender(user)}
           </div>
           <div className="user-info">
-            <label className="fs-5">Full Name :</label> 
+           
+            <label className="fs-5">Full Name</label> 
             <span className="fs-5 text-green">{user.fullname}</span>
-            <label className="fs-5">Email :</label>
+            
+            <label className="fs-5">Email</label>
             <a target="_blank" href={`mailto: ${user.email}`} className="fs-5 text-green">{user.email}</a> 
+            
           </div>
           </div>
 
