@@ -4,7 +4,10 @@ $basefont:20px;
 .sub-text {
     color: $gray;
 }
-
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
 .text-green {
     color: $green;
 }

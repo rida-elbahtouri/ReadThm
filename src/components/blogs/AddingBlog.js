@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {CreateBlog ,AddPhotoToBlog} from '../../functions/Api';
 import { connect } from 'react-redux'; 
+import { useHistory } from 'react-router';
 import '../../assets/styles/addingblog.scss';
 
 
@@ -8,6 +9,8 @@ const AddingBlog =(props)=> {
     const [title ,setTitle] = useState("")
     const [content ,setContent] = useState("")
     const [photo ,setPhoto] = useState(null)
+
+    const history = useHistory();
 
     // Create a function to check and save img temp
     // when new blog get save we return id and upload img to blog id
@@ -30,19 +33,17 @@ const AddingBlog =(props)=> {
        e.preventDefault();
 
        if(title && content && isPhotoValid(photo)){
-           console.log(props)
         CreateBlog({title,content},props.token).then(res =>{
             const id = res.data.id;
             const myphoto = new FormData();
-
             myphoto.append(
                 "photo",
                 photo,
                 photo.name
             );
-            console.log(myphoto)
-            AddPhotoToBlog(myphoto,id,props.token).catch(e => console.log(e))
-            
+            AddPhotoToBlog(myphoto,id,props.token).catch(e => console.log(e))   
+            history.push(`/blog/${id}`)
+
         }).catch(err =>{
             console.log(err)
         })
