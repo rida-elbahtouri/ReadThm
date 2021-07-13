@@ -1,0 +1,33 @@
+@import './variables.scss';
+
+.user-Profile {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    min-height: 900px;
+    .user-profile-data {
+        background-color: $lightgray;
+        .user-avatar {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        .user-info {
+          padding: 15px;
+          font-size: 20px;
+          display: flex;
+          flex-direction: column;
+        }
+    }
+    .user-blogs-section {
+        padding: 15px;
+        grid-column: 2/-1;
+        .user-blogs {
+            height: 100%;
+        }
+    }
+}

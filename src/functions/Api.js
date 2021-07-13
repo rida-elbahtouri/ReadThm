@@ -23,7 +23,9 @@ export const login = ({email,password}) => {
         password:password
     })
 }
-
+export const getUserBlogs = (user_id) => {
+    return Axios.get(`${baseUrl}/blogs/${user_id}/blogs`)
+}
 export const signup = ({fullname,email,password}) => {
     return Axios.post(`${baseUrl}/users/`, {
         fullname:fullname,
