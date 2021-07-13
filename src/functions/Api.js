@@ -17,6 +17,11 @@ export const getUser = (token) => {
 export const getUserById = (id) => {
     return Axios.get(`${baseUrl}/users/${id}`)
 }
+
+export const getBlogById = (id) => {
+    return Axios.get(`${baseUrl}/blogs/${id}`)
+}
+
 export const login = ({email,password}) => {
     return Axios.post(`${baseUrl}/users/login`, {
         email:email,
@@ -36,6 +41,14 @@ export const CreateBlog = (blog,token) => {
           'Authorization': `Bearer ${token}` 
         } 
     })
+}
+
+export const AddPhotoToBlog = (photo,blog_id,token) => {
+    return  Axios.post(`${baseUrl}/blogs/${blog_id}/photo`, photo,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    });
 }
 
 export const signup = ({fullname,email,password}) => {

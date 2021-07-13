@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {CreateBlog} from '../../functions/Api';
+import {CreateBlog ,AddPhotoToBlog} from '../../functions/Api';
 import { connect } from 'react-redux'; 
 import '../../assets/styles/addingblog.scss';
 
@@ -32,7 +32,17 @@ const AddingBlog =(props)=> {
        if(title && content && isPhotoValid(photo)){
            console.log(props)
         CreateBlog({title,content},props.token).then(res =>{
-            console.log(res)
+            const id = res.data.id;
+            const myphoto = new FormData();
+
+            myphoto.append(
+                "photo",
+                photo,
+                photo.name
+            );
+            console.log(myphoto)
+            AddPhotoToBlog(myphoto,id,props.token).catch(e => console.log(e))
+            
         }).catch(err =>{
             console.log(err)
         })

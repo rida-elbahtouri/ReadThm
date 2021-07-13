@@ -6,6 +6,7 @@ import Home from './components/home';
 import UserProfile from './components/UserProfile';
 import NavBar from './components/NavBar';
 import AddingBlog from './components/blogs/AddingBlog';
+import BlogShow from './components/blogs/BlogShow';
 function App() {
   const [isActive, setIsActive] = useState(false)
   const authUser = () => {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/profile" component={UserProfile} />
         <Route path="/addblog" component={AddingBlog} />
         <Route path="/user/:id" component={UserProfile} />
+        <Route path="/blog/:id" component={BlogShow} />
       </Switch>
       </div>
     </div>
