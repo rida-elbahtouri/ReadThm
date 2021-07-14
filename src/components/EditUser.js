@@ -17,11 +17,23 @@ const EditUser = (props) => {
     const [password ,setPassword] = useState("")
     const [newPassword ,setNewPassword] = useState("")
     const [passwordConfirm ,setPasswordConfirm] = useState("")
-
+    const [passwordConfirmError ,setPasswordConfirmError] = useState("")
+    const [successMsg,setSuccessMsg] = useState("")
+    const showError=(error)=> {
+        if(error){
+            return <p className="alert-danger">{error}</p>
+        }
+    }
+    const showSuccess = (msg) => {
+        if(msg){
+            return <p className="alert-success">{msg}</p>
+        }
+    }
    const ChangePassword = () => {
        if(wantToChangePass){
              return (
            <div>
+               {showError(passwordError)}
                 <label>Old Password</label>
                     <input
                     type="password" 
@@ -34,6 +46,7 @@ const EditUser = (props) => {
                     placeholder="Enter your new password" 
                     onChange={(e)=>{setNewPassword(e.target.value)}}
                     required />
+                    {showError(passwordConfirmError)}
                       <label>Confirm Password</label>
                     <input
                     type="password" 
@@ -45,8 +58,6 @@ const EditUser = (props) => {
        }
      
    }
-
-   console.log(fullname,password,email,passwordConfirm,newPassword)
    const ShowHidePassChn = ()=>{
     if(wantToChangePass === true){
         setBtnMsg("I want to change my password")
@@ -60,23 +71,32 @@ const EditUser = (props) => {
 
     const submitForm = (e) => {
         e.preventDefault();
+        setPasswordConfirmError("")
+        setPasswordError("")
+        setSuccessMsg("")
         const data =  {}
-        if(wantToChangePass){
-            data.fullname = fullname
-            data.email = email;
-            data.password = password;
-            data.new_password = newPassword;
-        }else {
-            data.fullname = fullname
-            data.email = email;
+        if(passwordConfirm !== newPassword){
+            setPasswordConfirmError("passwords dosn't match")
+        }else{
+            console.log(passwordConfirmError)
+            if(wantToChangePass){
+                data.fullname = fullname
+                data.email = email;
+                data.password = password;
+                data.new_password = newPassword;
+            }else {
+                data.fullname = fullname
+                data.email = email;
+            }
+            setPasswordError("")
+            UpdatetheUser(data, props.token).then((res) =>{
+                getToken(res.data.token)
+                setSuccessMsg("Profile updated successfully :)")
+            } ).catch(e=>{
+                setPasswordError(e.response.data.message)
+            })
         }
-
-        UpdatetheUser(data, props.token).then((res) =>{
-            getToken(res.data.token)
-            console.log(res)
-        } ).catch(e=>{
-            console.log(e.response.data)
-        })
+       
     }
 
 
@@ -86,6 +106,7 @@ const EditUser = (props) => {
             <div className="edit-Profile">
                 <UpdateAvatar user={user} token={props.token} />
                 <form onSubmit={submitForm} className="edituser-form">
+                {showSuccess(successMsg)}
                     <label>Full Name</label>
                     <input
                     type="text" 
@@ -102,9 +123,7 @@ const EditUser = (props) => {
                     onChange={(e)=>{setEmail(e.target.value)}}
                     required />
                     {ChangePassword()}
-                   
-                    <button onClick={ShowHidePassChn} className="text-green" type="button">{btnMsg}</button>
-                   
+                    <button onClick={ShowHidePassChn} className="text-green bg-black btn" type="button">{btnMsg}</button>
                    <input type="submit" value="Save" className="btn green-btn" />
 
                 </form>
