@@ -29,6 +29,30 @@
               font-weight: bold;
             }
         }
+
+        .links-user-edit {
+            text-align: center;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            a {
+                border-radius: 5px;
+                color: rgb(255, 255, 255) !important;
+                padding: 10px;
+                font-size: 16px;
+                margin: 5px;
+               
+               display: flex;
+               align-content: center;
+                
+            }
+            .edit-btn {
+                background-color: rgb(143, 143, 27);
+            }
+            .delete-btn {
+                background-color: rgb(109, 25, 25);
+            }
+        }
     }
     .user-blogs-section {
         padding: 15px;

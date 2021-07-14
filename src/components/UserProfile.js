@@ -1,23 +1,27 @@
 import {getUserById , getUserBlogs} from '../functions/Api';
 import { connect } from 'react-redux'; 
 import {UserAvatarRender , BlogimageRender} from '../functions/checkPhoto'
+//import { IconContext } from "react-icons";
+import {BiPencil} from "react-icons/bi";
+import {BsTrash} from "react-icons/bs";
 import { useState ,useEffect } from 'react'; 
 import { Link } from 'react-router-dom';
 import '../assets/styles/profile.scss'
 
 const UserProfile =(props)=> {
 
-      // let user;
-      // let currentuser;
       const [user,setUser] = useState(null)
-
+      const [currentUser , setCurrentUser] = useState(false)
+      const [UserNotfound, setUserNotFound] = useState(false)
       useEffect(() => {
       if(props.match.params.id) {
-       console.log('vid')
        getUserById(props.match.params.id).then(res =>{
              setUser(res.data)
+       }).catch(() =>{
+        setUserNotFound(true)
        })
      }else {
+      setCurrentUser(true)
       setUser(props.user)
      }
       }, [])
@@ -31,7 +35,16 @@ const UserProfile =(props)=> {
           console.log(err.response.message)
         })
        }
-
+       const editUser = () => {
+         if(currentUser){
+           return (
+             <div className="links-user-edit">
+               <Link className="edit-btn" to={"user/edit"}><BiPencil /></Link> 
+               <Link className="delete-btn" to={"user/delete"}><BsTrash /></Link> 
+             </div>
+           )
+         }
+       }
       const renderBlogs= (blogs) => {
         const result = blogs.map(blog=>{
           return (
@@ -54,6 +67,7 @@ const UserProfile =(props)=> {
           <div className="user-avatar">
             {UserAvatarRender(user)}
           </div>
+          {editUser()}
           <div className="user-info">
            
             <label className="fs-5">Full Name</label> 
@@ -76,8 +90,11 @@ const UserProfile =(props)=> {
           </div>
         </div>
          )
-       } else {
+       } else if(UserNotfound) {
          return <div><h1>404 User not found</h1> </div>
+       }
+       else {
+         return <h1>Loading</h1>
        }
 
      }
