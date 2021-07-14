@@ -3,6 +3,7 @@ import { useState } from 'react';
 import UpdateAvatar from './UpdateAvatar';
 import { getToken } from '../actions' 
 import {EditUser as UpdatetheUser} from '../functions/Api';
+import {showError,showSuccess} from '../functions/helpers'
 import '../assets/styles/edituser.scss'
 
 const EditUser = (props) => {
@@ -19,16 +20,7 @@ const EditUser = (props) => {
     const [passwordConfirm ,setPasswordConfirm] = useState("")
     const [passwordConfirmError ,setPasswordConfirmError] = useState("")
     const [successMsg,setSuccessMsg] = useState("")
-    const showError=(error)=> {
-        if(error){
-            return <p className="alert-danger">{error}</p>
-        }
-    }
-    const showSuccess = (msg) => {
-        if(msg){
-            return <p className="alert-success">{msg}</p>
-        }
-    }
+    
    const ChangePassword = () => {
        if(wantToChangePass){
              return (
