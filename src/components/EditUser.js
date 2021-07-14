@@ -1,67 +1,105 @@
 import { connect } from 'react-redux'; 
 import { useState } from 'react';
-import UpdateAvatar from './UpdateAvatar'
+import UpdateAvatar from './UpdateAvatar';
+import { getToken } from '../actions' 
+import {EditUser as UpdatetheUser} from '../functions/Api';
 import '../assets/styles/edituser.scss'
+
 const EditUser = (props) => {
     const {user} = props;
 
-    const [changePassFormClass,setChangePassFormClass] = useState("none")
+    const [wantToChangePass,setWantToChangePass] = useState(false)
     const [btnMsg ,setBtnMsg] = useState("I want to change my password")
 
+    const [fullname ,setFullname] = useState("")
+    const [email ,setEmail] = useState("")
+    const [passwordError ,setPasswordError] = useState("")
+    const [password ,setPassword] = useState("")
+    const [newPassword ,setNewPassword] = useState("")
+    const [passwordConfirm ,setPasswordConfirm] = useState("")
 
    const ChangePassword = () => {
-       return (
-           <div className={changePassFormClass}>
+       if(wantToChangePass){
+             return (
+           <div>
                 <label>Old Password</label>
                     <input
                     type="password" 
                     placeholder="Enter your old password" 
+                    onChange={(e)=>{setPassword(e.target.value)}}
                     required />
                       <label>New Password</label>
                     <input
                     type="password" 
                     placeholder="Enter your new password" 
+                    onChange={(e)=>{setNewPassword(e.target.value)}}
                     required />
                       <label>Confirm Password</label>
                     <input
                     type="password" 
                     placeholder="Confirm your new password" 
+                    onChange={(e)=>{setPasswordConfirm(e.target.value)}}
                     required />
            </div>
        )
+       }
+     
    }
 
-
+   console.log(fullname,password,email,passwordConfirm,newPassword)
    const ShowHidePassChn = ()=>{
-    if(changePassFormClass === "d-block"){
+    if(wantToChangePass === true){
         setBtnMsg("I want to change my password")
-        setChangePassFormClass("none")
+        setWantToChangePass(false)
     }else {
         setBtnMsg("Keep my password")
-        setChangePassFormClass("d-block")
+        setWantToChangePass(true)
+    }
     }
 
-    
-    setChangePassFormClass(changePassFormClass === "d-block"? "none":"d-block")
+
+    const submitForm = (e) => {
+        e.preventDefault();
+        const data =  {}
+        if(wantToChangePass){
+            data.fullname = fullname
+            data.email = email;
+            data.password = password;
+            data.new_password = newPassword;
+        }else {
+            data.fullname = fullname
+            data.email = email;
+        }
+
+        UpdatetheUser(data, props.token).then((res) =>{
+            getToken(res.data.token)
+            console.log(res)
+        } ).catch(e=>{
+            console.log(e.response.data)
+        })
     }
+
+
     const renderHelper = (user) => {
     if(user){
         return (
             <div className="edit-Profile">
                 <UpdateAvatar user={user} token={props.token} />
-                <form className="edituser-form">
+                <form onSubmit={submitForm} className="edituser-form">
                     <label>Full Name</label>
                     <input
                     type="text" 
-                    value={user.fullname}
+                    defaultValue={user.fullname}
                     placeholder="Enter your full name" 
+                    onChange={(e)=>{setFullname(e.target.value)}}
                     required />
 
                 <label>Email</label>
                     <input
                     type="email" 
-                    value={user.email}
+                    defaultValue={user.email}
                     placeholder="Enter your email" 
+                    onChange={(e)=>{setEmail(e.target.value)}}
                     required />
                     {ChangePassword()}
                    
@@ -85,4 +123,10 @@ const mapStateToProps = state => ({
     token: state.Token,
     user: state.CurrentUser
   });
-  export default connect(mapStateToProps)(EditUser);
+
+  const mapDispatchToProps = dispatch => ({
+    getToken: token => {
+      dispatch(getToken(token));
+    },
+});
+  export default connect(mapStateToProps, mapDispatchToProps)(EditUser);

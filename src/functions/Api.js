@@ -50,6 +50,13 @@ export const AddPhotoToBlog = (photo,blog_id,token) => {
         } 
     });
 }
+export const EditUser = (data,token) => {
+    return  Axios.patch(`${baseUrl}/users/`, data,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    });
+}
 export const AddAvatarToUser = (avatar,token) => {
     return  Axios.post(`${baseUrl}/users/me/avatar`, avatar,{
         headers: {
