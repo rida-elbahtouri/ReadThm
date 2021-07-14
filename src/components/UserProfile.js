@@ -1,7 +1,6 @@
 import {getUserById , getUserBlogs} from '../functions/Api';
 import { connect } from 'react-redux'; 
 import {UserAvatarRender , BlogimageRender} from '../functions/checkPhoto'
-//import { IconContext } from "react-icons";
 import {BiPencil} from "react-icons/bi";
 import {BsTrash} from "react-icons/bs";
 import { useState ,useEffect } from 'react'; 
@@ -16,10 +15,14 @@ const UserProfile =(props)=> {
       useEffect(() => {
       if(props.match.params.id) {
        getUserById(props.match.params.id).then(res =>{
+              if(props.user && props.user.id === props.match.params.id){
+                setCurrentUser(true)
+              }
              setUser(res.data)
        }).catch(() =>{
         setUserNotFound(true)
        })
+
      }else {
       setCurrentUser(true)
       setUser(props.user)
@@ -28,7 +31,7 @@ const UserProfile =(props)=> {
      
      const [userBlogs , setUserBlogs] = useState([])
      
-       if(user){
+       if(user && userBlogs.length === 0){
         getUserBlogs(user.id).then(res =>{
           setUserBlogs(res.data.autherBlogs)
         }).catch(err => {
@@ -39,8 +42,8 @@ const UserProfile =(props)=> {
          if(currentUser){
            return (
              <div className="links-user-edit">
-               <Link className="edit-btn" to={"user/edit"}><BiPencil /></Link> 
-               <Link className="delete-btn" to={"user/delete"}><BsTrash /></Link> 
+               <Link className="edit-btn" to="/edit/user"><BiPencil /></Link> 
+               <Link className="delete-btn" to="/delete/user"><BsTrash /></Link> 
              </div>
            )
          }

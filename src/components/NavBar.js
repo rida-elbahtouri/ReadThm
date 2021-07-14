@@ -3,7 +3,7 @@ import { Link} from 'react-router-dom';
 import {getUser} from '../functions/Api';
 import {getUserData} from '../actions';
 import {UserAvatarRender} from '../functions/checkPhoto';
-
+import {VscNewFile} from "react-icons/vsc";
 
 import '../assets/styles/nav.scss'
 
@@ -22,9 +22,8 @@ import '../assets/styles/nav.scss'
         if (user){
             return (
                 <div className="right-position user-box">
-                    <Link to="/addblog">New blog</Link>
-                    
-                    <Link to="/profile">
+                    <Link className="addblog-link" title="new blog" to="/addblog"><VscNewFile /></Link>
+                    <Link className="profile-link" to="/profile">
                        {UserAvatarRender(user)}
                     </Link>
                 </div>

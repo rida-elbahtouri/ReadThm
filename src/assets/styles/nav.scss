@@ -30,9 +30,19 @@
 }
 
 .user-box {
- 
-    max-width: 50px;
-
+    display: flex;
+    max-width: 80px;
+    align-items: center;
+    justify-content: space-between;
+    .addblog-link {
+        background-color: $lightgreen;
+        padding: 5px;
+        color: $green !important;
+        border-radius: 5px;
+    }
+    .profile-link {
+        width: 45%;
+    }
      img {
          width: 100%;
          border-radius: 50%;
