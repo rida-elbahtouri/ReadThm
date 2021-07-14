@@ -1,8 +1,8 @@
-import React from 'react'
-import BlogCard from './BlogCard'
+import { Link } from 'react-router-dom';
+import BlogCard from './BlogCard';
 import {BlogimageRender} from '../../functions/checkPhoto'
 
-export default function HeaderBlogs(props) {
+const HeaderBlogs = (props) => {
     const renderThreeBlogs = (blogs) => {
         const res = blogs.map(blog=>{
             return <BlogCard key={blog.id} blog = {blog} />
@@ -16,8 +16,14 @@ export default function HeaderBlogs(props) {
         <div className="headerblogs">
             <div className="most-readed">
             <div className="blog-content">
+            <Link to={`/blog/${blogs[0].id}`}>
              <h1>{blogs[0].title}</h1>   
-                <span>By : {blogs[0].auther.fullname}</span>  
+             </Link>
+                <span>By : 
+                <Link to={`/user/${blogs[0].auther.id}`}>
+                    {blogs[0].auther.fullname}
+                </Link>
+                </span>  
 
             <p> {blogs[0].content.slice(0,500)}... </p>
             </div>
@@ -25,8 +31,14 @@ export default function HeaderBlogs(props) {
             </div>
             <div className="second-most-readed">
            {BlogimageRender(blogs[1])}
-            <h1>{blogs[1].title}</h1>   
-                <span>By : {blogs[1].auther.fullname}</span>  
+           <Link to={`/blog/${blogs[1].id}`}>
+               <h1>{blogs[1].title}</h1>
+            </Link>   
+                <span>By : 
+                    <Link to={`/user/${blogs[1].auther.id}`}>
+                        {blogs[1].auther.fullname}
+                    </Link>
+                </span>  
 
             <p> {blogs[1].content} </p>
             </div>
@@ -46,3 +58,4 @@ export default function HeaderBlogs(props) {
         </div>
     )
 }
+export default HeaderBlogs;

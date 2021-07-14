@@ -1,21 +1,27 @@
 import {getUserById , getUserBlogs} from '../functions/Api';
 import { connect } from 'react-redux'; 
 import {UserAvatarRender , BlogimageRender} from '../functions/checkPhoto'
-import { useState } from 'react'; 
+import { useState ,useEffect } from 'react'; 
+import { Link } from 'react-router-dom';
 import '../assets/styles/profile.scss'
 
 const UserProfile =(props)=> {
 
-      let user;
-      let currentuser;
-     if(props.match.params.id) {
+      // let user;
+      // let currentuser;
+      const [user,setUser] = useState(null)
+
+      useEffect(() => {
+      if(props.match.params.id) {
+       console.log('vid')
        getUserById(props.match.params.id).then(res =>{
-             user = res.data
+             setUser(res.data)
        })
      }else {
-         user = props.user
-         currentuser = true;
+      setUser(props.user)
      }
+      }, [])
+     
      const [userBlogs , setUserBlogs] = useState([])
      
        if(user){
@@ -29,13 +35,13 @@ const UserProfile =(props)=> {
       const renderBlogs= (blogs) => {
         const result = blogs.map(blog=>{
           return (
-            <div className="blogs-for-you-card" key={blog.id}>
+            <Link to={`/blog/${blog.id}`} className="blogs-for-you-card" key={blog.id}>
               {BlogimageRender(blog)}
               <div className="blog-card-for-you-content">
               <h2>{blog.title}</h2>
               <p>{blog.content.slice(0,100)} ...</p> 
               </div>
-            </div>
+            </Link>
           )
         })
         return result;
