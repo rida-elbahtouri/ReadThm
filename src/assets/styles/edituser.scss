@@ -18,6 +18,12 @@
     background-color: $lightgray;
     text-align: center;
     padding: 10px;
+
+    img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+    }
 }
 .edituser-form {
     padding: 20px;
@@ -44,8 +50,9 @@
     cursor: pointer !important;
     background-color: $green;
      label {
-         margin-top: 50%;
+         margin-top: 25px;
          transform: translateY(-50%);
+         display: block;
      }
 }
 .fileInput {

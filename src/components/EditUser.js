@@ -1,11 +1,15 @@
 import { connect } from 'react-redux'; 
-import {UserAvatarRender} from '../functions/checkPhoto';
+import {UserAvatarRender,isPhotoValid} from '../functions/checkPhoto';
 import { useState } from 'react';
+import {AddAvatarToUser} from '../functions/Api';
+
 import '../assets/styles/edituser.scss'
 const EditUser = (props) => {
     const {user} = props;
 
     const [changePassFormClass,setChangePassFormClass] = useState("none")
+    const [showAvatar , setShowAvatar] = useState(null)
+    const [currentAvatar ,setCurrentAvatar] = useState(null)
    const ChangePassword = () => {
        return (
            <div className={changePassFormClass}>
@@ -27,17 +31,48 @@ const EditUser = (props) => {
            </div>
        )
    }
-   
+
+   const avatarDisplayed = (user) => {
+       if(currentAvatar){
+           return <img src={URL.createObjectURL(showAvatar)} alt="avatar" />
+       }else {
+           return UserAvatarRender(user)
+       }
+   }
+
+    const HandleAvatarUpload = (e) => {
+       if(isPhotoValid(e.target.files[0])){
+          const avatar = e.target.files[0]
+          setShowAvatar(avatar)
+        const myavatar = new FormData();
+        myavatar.append(
+            "avatar",
+            avatar,
+            avatar.name
+        );
+        AddAvatarToUser(myavatar,props.token).then(res=> {
+            setCurrentAvatar(true)
+        }).catch(err=>{
+            console.log(err.response)
+        })
+
+       }else{
+        console.log("nt valid")
+       }
+
+    }
     const renderHelper = (user) => {
     if(user){
         return (
             <div className="edit-Profile">
                 <div className="edit-profile-avatar">
-                    {UserAvatarRender(user)}
-                 
+                    
+                {avatarDisplayed(user)}
                     <div className="inputWrapper">
                        <label>Select Avatar</label> 
-                         <input className="fileInput" type="file" accept="image/*" />
+                         <input 
+                         onChange={e => HandleAvatarUpload(e)}
+                         className="fileInput" type="file" accept="image/*" />
                     </div>
 
                 </div>

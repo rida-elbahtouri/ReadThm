@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {CreateBlog ,AddPhotoToBlog} from '../../functions/Api';
+import {isPhotoValid} from '../../functions/checkPhoto';
 import { connect } from 'react-redux'; 
 import { useHistory } from 'react-router';
 import '../../assets/styles/addingblog.scss';
@@ -14,13 +15,7 @@ const AddingBlog =(props)=> {
 
     // Create a function to check and save img temp
     // when new blog get save we return id and upload img to blog id
-    const isPhotoValid = (photo) => {
-        if(photo && photo.size > 1000000){
-            return false;
-        }else {
-            return true;
-        }
-    }
+    
     const imagError = () => {
         if(!isPhotoValid(photo)) {
             return (<p className="alert-danger">

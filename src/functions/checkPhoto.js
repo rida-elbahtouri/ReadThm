@@ -13,3 +13,10 @@ export const UserAvatarRender=(user)=> {
     return <img src={`http://localhost:3000/users/${user.id}/avatar`}
     onError={addDefaultSrc} />
 }
+export const isPhotoValid = (photo) => {
+    if(photo && photo.size > 1000000){
+        return false;
+    }else {
+        return true;
+    }
+}
