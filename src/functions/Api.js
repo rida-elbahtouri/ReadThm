@@ -42,8 +42,15 @@ export const CreateBlog = (blog,token) => {
         } 
     })
 }
-export const UpdateBlog = () => {
-    console.log("here we will update blog")
+export const UpdateBlog = (blog,token) => {
+    return Axios.patch(`${baseUrl}/blogs/${blog.id}`, {
+        title:blog.title,
+        content:blog.content
+    },{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
 }
 export const AddPhotoToBlog = (photo,blog_id,token) => {
     return  Axios.post(`${baseUrl}/blogs/${blog_id}/photo`, photo,{
