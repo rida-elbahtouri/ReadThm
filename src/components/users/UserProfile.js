@@ -1,11 +1,13 @@
-import {getUserById , getUserBlogs , deleteUser} from '../functions/Api';
+import {getUserById , getUserBlogs , deleteUser} from '../../functions/Api';
 import { connect } from 'react-redux'; 
-import {UserAvatarRender , BlogimageRender} from '../functions/checkPhoto'
+import {UserAvatarRender} from '../../functions/checkPhoto'
 import {BiPencil} from "react-icons/bi";
 import {BsTrash} from "react-icons/bs";
 import { useState ,useEffect } from 'react'; 
 import { Link } from 'react-router-dom';
-import '../assets/styles/profile.scss'
+import UserBlogs from './userBlogs';
+
+import '../../assets/styles/profile.scss'
 
 const UserProfile =(props)=> {
 
@@ -40,6 +42,7 @@ const UserProfile =(props)=> {
        }
        const deleteProfile = () => {
         deleteUser(props.token).then(res => {
+          // add redirect method later
           console.log(res)
         }).catch(err => {
           console.log(err)
@@ -49,8 +52,8 @@ const UserProfile =(props)=> {
          if(currentUser){
            return (
              <div className="links-user-edit">
-               <Link className="edit-btn" to="/edit/user"><BiPencil /></Link> 
-               <button onClick={deleteProfile} className="delete-btn"><BsTrash /></button> 
+               <Link className="edit-btn user-btn" to="/edit/user"><BiPencil /></Link> 
+               <button onClick={deleteProfile} className="delete-btn user-btn"><BsTrash /></button> 
              </div>
            )
          }
@@ -58,13 +61,7 @@ const UserProfile =(props)=> {
       const renderBlogs= (blogs) => {
         const result = blogs.map(blog=>{
           return (
-            <Link to={`/blog/${blog.id}`} className="blogs-for-you-card" key={blog.id}>
-              {BlogimageRender(blog)}
-              <div className="blog-card-for-you-content">
-              <h2>{blog.title}</h2>
-              <p>{blog.content.slice(0,100)} ...</p> 
-              </div>
-            </Link>
+            <UserBlogs blog={blog} />
           )
         })
         return result;

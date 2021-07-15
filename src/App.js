@@ -3,11 +3,11 @@ import { useState } from 'react';
 
 import AuthUserCompoenent from './components/auth/AuthUser';
 import Home from './components/home';
-import UserProfile from './components/UserProfile';
+import UserProfile from './components/users/UserProfile';
 import NavBar from './components/NavBar';
 import AddingBlog from './components/blogs/AddingBlog';
 import BlogShow from './components/blogs/BlogShow';
-import EditUser from './components/EditUser'
+import EditUser from './components/users/EditUser'
 function App() {
   const [isActive, setIsActive] = useState(false)
   const authUser = () => {

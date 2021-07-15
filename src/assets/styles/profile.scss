@@ -35,23 +35,18 @@
             margin-top: 15px;
             display: flex;
             justify-content: center;
-            a {
+            .user-btn {
                 border-radius: 5px;
                 color: rgb(255, 255, 255) !important;
                 padding: 10px;
                 font-size: 16px;
                 margin: 5px;
-               
+               cursor: pointer;
                display: flex;
                align-content: center;
                 
             }
-            .edit-btn {
-                background-color: rgb(143, 143, 27);
-            }
-            .delete-btn {
-                background-color: rgb(109, 25, 25);
-            }
+           
         }
     }
     .user-blogs-section {
@@ -59,6 +54,9 @@
         grid-column: 2/-1;
         .user-blogs {
             height: 100%;
+        }
+        .blog-edit {
+            width: 100px;
         }
     }
 }

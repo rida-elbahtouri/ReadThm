@@ -38,3 +38,19 @@ body {
     padding: 5px;
     border-radius: 5px;
 }
+.edit-btn {
+    background-color: rgb(143, 143, 27);
+}
+.delete-btn {
+    background-color: rgb(109, 25, 25);
+}
+
+.d-flex{
+    display: flex;
+} 
+.align-center{
+    align-items: center;
+} 
+.justcont-between{
+    justify-content: space-between;
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import {UserAvatarRender,isPhotoValid} from '../functions/checkPhoto';
-import {AddAvatarToUser} from '../functions/Api';
-import {showError,showSuccess} from '../functions/helpers';
+import {UserAvatarRender,isPhotoValid} from '../../functions/checkPhoto';
+import {AddAvatarToUser} from '../../functions/Api';
+import {showError,showSuccess} from '../../functions/helpers';
 const UpdateAvatar = (props) => {
 
     const {user} = props;
