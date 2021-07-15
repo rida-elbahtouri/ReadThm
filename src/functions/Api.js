@@ -52,6 +52,13 @@ export const UpdateBlog = (blog,token) => {
         } 
     })
 }
+export const DeleteBlog = (blog_id,token) => {
+    return Axios.delete(`${baseUrl}/blogs/${blog_id}`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
+}
 export const AddPhotoToBlog = (photo,blog_id,token) => {
     return  Axios.post(`${baseUrl}/blogs/${blog_id}/photo`, photo,{
         headers: {

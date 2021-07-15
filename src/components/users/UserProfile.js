@@ -1,6 +1,6 @@
-import {getUserById , getUserBlogs , deleteUser} from '../../functions/Api';
+import {getUserById , getUserBlogs , deleteUser,DeleteBlog} from '../../functions/Api';
 import { connect } from 'react-redux'; 
-import {UserAvatarRender} from '../../functions/checkPhoto'
+import {UserAvatarRender} from '../../functions/checkPhoto';
 import {BiPencil} from "react-icons/bi";
 import {BsTrash} from "react-icons/bs";
 import { useState ,useEffect } from 'react'; 
@@ -40,6 +40,17 @@ const UserProfile =(props)=> {
           console.log(err.response.message)
         })
        }
+
+       const deletemyblog = (blog_id) => {
+        DeleteBlog(blog_id,props.token).then((res) =>{
+            
+          const newblogs = userBlogs.filter(blog => blog.id !== blog_id);
+          setUserBlogs(newblogs)
+
+        } ).catch((err) =>{
+            console.log(err)
+        })
+       }
        const deleteProfile = () => {
         deleteUser(props.token).then(res => {
           // add redirect method later
@@ -61,7 +72,7 @@ const UserProfile =(props)=> {
       const renderBlogs= (blogs) => {
         const result = blogs.map(blog=>{
           return (
-            <UserBlogs blog={blog} />
+            <UserBlogs blog={blog} deletemyblog={deletemyblog} />
           )
         })
         return result;

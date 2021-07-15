@@ -21,6 +21,8 @@ const EditBlog = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setSuccessMsg("")
+        setError("")
         UpdateBlog({title,content,id:blog.id},props.token).then(res=>{
             setSuccessMsg("Blog has been updated successfully")
             console.log(res.data)
@@ -33,7 +35,9 @@ const EditBlog = (props) => {
         if(blog){
             return(
                 <div className="blogedit-page">
-                    <UpdateBlogPhoto blog={blog} />
+                    {showSuccess(successMsg)}
+                    {showError(error)}
+                    <UpdateBlogPhoto blog={blog} token={props.token} />
                    <form onSubmit={handleSubmit} className="blog-form">
                     <input onChange={(e)=>{setTitle(e.target.value)}}
                     className="blog-title" type="text" placeholder="blog title" defaultValue={blog.title} />
