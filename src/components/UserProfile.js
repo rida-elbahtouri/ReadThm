@@ -1,4 +1,4 @@
-import {getUserById , getUserBlogs} from '../functions/Api';
+import {getUserById , getUserBlogs , deleteUser} from '../functions/Api';
 import { connect } from 'react-redux'; 
 import {UserAvatarRender , BlogimageRender} from '../functions/checkPhoto'
 import {BiPencil} from "react-icons/bi";
@@ -38,12 +38,19 @@ const UserProfile =(props)=> {
           console.log(err.response.message)
         })
        }
+       const deleteProfile = () => {
+        deleteUser(props.token).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
+       }
        const editUser = () => {
          if(currentUser){
            return (
              <div className="links-user-edit">
                <Link className="edit-btn" to="/edit/user"><BiPencil /></Link> 
-               <Link className="delete-btn" to="/delete/user"><BsTrash /></Link> 
+               <button onClick={deleteProfile} className="delete-btn"><BsTrash /></button> 
              </div>
            )
          }

@@ -71,3 +71,11 @@ export const signup = ({fullname,email,password}) => {
         password:password
     })
 }
+
+export const deleteUser = (token) => {
+    return Axios.delete(`${baseUrl}/users/`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    } )
+}
