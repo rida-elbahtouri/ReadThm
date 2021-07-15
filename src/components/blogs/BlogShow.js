@@ -19,7 +19,6 @@ export default function BlogShow(props) {
     
 
     const renderHelper = (blog) => {
-        console.log(blog)
         if(blog){
             return(
                 <div className="blogshow-page">

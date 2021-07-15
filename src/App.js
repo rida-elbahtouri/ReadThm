@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import AddingBlog from './components/blogs/AddingBlog';
 import BlogShow from './components/blogs/BlogShow';
 import EditUser from './components/users/EditUser'
+import EditBlog from './components/blogs/EditBlog';
 function App() {
   const [isActive, setIsActive] = useState(false)
   const authUser = () => {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/addblog" component={AddingBlog} />
         <Route path="/user/:id" component={UserProfile} />
         <Route path="/blog/:id" component={BlogShow} />
+        <Route path="/edit/blog/:id" component={EditBlog} />
         <Route path="/edit/user" component={EditUser} />
       </Switch>
       </div>

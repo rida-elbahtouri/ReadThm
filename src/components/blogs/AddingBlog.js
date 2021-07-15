@@ -47,7 +47,7 @@ const AddingBlog =(props)=> {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className="addblog-form">
+            <form onSubmit={handleSubmit} className="blog-form">
                 <div className="form-field">
                 <label>Title</label>
                 <input onChange={e => setTitle(e.target.value)}

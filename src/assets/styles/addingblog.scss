@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.addblog-form {
+.blog-form {
     background-color: $lightgray;
     padding: 15px;
     .form-field {
@@ -21,6 +21,7 @@
             width: 100%;
             min-height: 500px;
             padding: 5px;
+            resize: none;
         }
     }
 }
