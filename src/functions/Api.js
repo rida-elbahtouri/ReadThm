@@ -6,6 +6,16 @@ export const getAllblogs = () => {
     return Axios.get(`${baseUrl}/blogs`)
 }
 
+export const getTrendingblogs = () => {
+    return Axios.get(`${baseUrl}/blogs/trending`)
+}
+
+export const getPopulerblogs = () => {
+    return Axios.get(`${baseUrl}/blogs/populer`)
+}
+export const searchForBlog = (term) => {
+    return Axios.get(`${baseUrl}/blogs/search/${term}`)
+}
 export const getUser = (token) => {
     return Axios.get(`${baseUrl}/users/profile`, {
         headers: {
