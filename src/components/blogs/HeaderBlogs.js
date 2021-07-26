@@ -1,8 +1,25 @@
 import { Link } from 'react-router-dom';
 import BlogCard from './BlogCard';
+import { useState , useEffect } from 'react';
+import { getPopulerblogs } from '../../functions/Api';
 import {BlogimageRender} from '../../functions/checkPhoto'
 
-const HeaderBlogs = (props) => {
+const HeaderBlogs = () => {
+    
+    useEffect(() => {
+        getPopulerblogs()
+        .then((res) => {
+            setPopulerBlogs(res.data)
+        })
+        .catch((err) => console.log(err))
+    },
+    [])
+
+    const [populerBlogs,setPopulerBlogs] = useState(null)
+
+    
+    
+    
     const renderThreeBlogs = (blogs) => {
         const res = blogs.map(blog=>{
             return <BlogCard key={blog.id} blog = {blog} />
@@ -11,7 +28,8 @@ const HeaderBlogs = (props) => {
     }
 
     const renderHelper = (blogs) => {
-        return (
+        if(blogs){
+            return (
         <div>
         <div className="headerblogs">
             <div className="most-readed">
@@ -40,21 +58,20 @@ const HeaderBlogs = (props) => {
                     </Link>
                 </span>  
 
-            <p> {blogs[1].content} </p>
+            <p> {blogs[1].content.slice(0,350)} </p>
             </div>
         </div>
         <div className="trending-blogs">
-            {renderThreeBlogs(blogs.slice(2))}
-            <div className="Seemore-link">
-                See more -&gt;
-            </div>
+            {renderThreeBlogs(blogs.slice(2,6))}
         </div>
         </div>
         )
+        }
+        
     }
     return (
         <div>
-            {renderHelper(props.blogs)}
+            {renderHelper(populerBlogs)}
         </div>
     )
 }

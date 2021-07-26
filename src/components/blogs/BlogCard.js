@@ -14,7 +14,7 @@ export default function BlogCard(props) {
             <span>By <Link to={`/user/${props.blog.auther.id}`}>{props.blog.auther.fullname}</Link></span>
             </div>
             </div>
-            <p>{props.blog.content}</p>
+            <p>{props.blog.content.slice(0,100)}</p>
         </div>
     )
 }

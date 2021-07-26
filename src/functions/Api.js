@@ -9,7 +9,9 @@ export const getAllblogs = () => {
 export const getTrendingblogs = () => {
     return Axios.get(`${baseUrl}/blogs/trending`)
 }
-
+export const getHotblogs = () => {
+    return Axios.get(`${baseUrl}/blogs/hot`)
+}
 export const getPopulerblogs = () => {
     return Axios.get(`${baseUrl}/blogs/populer`)
 }
