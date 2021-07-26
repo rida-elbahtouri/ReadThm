@@ -60,6 +60,7 @@
     }
     input {
         padding: 5px;
+        width: 100%;
     }
     input:focus{
         outline: none;
@@ -82,5 +83,56 @@
      img {
          width: 100%;
          border-radius: 50%;
+     }
+ }
+
+
+ @media only screen and (max-width: $tablets) {
+    .navbar {
+   
+        h1 {
+          
+            left: 20px;
+            top: 50%;
+            transform: translate(-0%,-50%);
+        }
+    
+  
+    }
+ }
+
+ @media only screen and (max-width:  $phones) {
+    .navbar {
+        height: 120px;
+        h1 {
+            left: 50%;
+            top: 10px;
+            transform: translate(-50%,-0%);
+        }
+        .right-position {
+            width: 100%;
+            flex-direction: column;
+            left: 50%;
+            right: auto;
+            top: 50px;
+            transform: translate(-50%,-0%);
+            padding: 5px;
+            .search-bar {
+                margin-right: 0;
+            }
+            .green-btn {
+                font-size: 12px;
+                width: 60px;
+                margin-top: 5px;
+            }
+        }
+  
+    }
+    .user-box {
+
+         img {
+             width: 30px;
+             border-radius: 50%;
+         }
      }
  }
