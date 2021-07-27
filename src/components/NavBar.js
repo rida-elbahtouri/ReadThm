@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'; 
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {getUser} from '../functions/Api';
 import {getUserData} from '../actions';
 import {UserAvatarRender} from '../functions/checkPhoto';
 import {VscNewFile} from "react-icons/vsc";
-import {BiSearch} from 'react-icons/bi';
 import '../assets/styles/nav.scss'
+import SearchBar from './SearchBar';
 
 
  const NavBar = (props) => {
@@ -37,21 +37,16 @@ import '../assets/styles/nav.scss'
             )
         }
     }
-    const searchBar = () => {
-        return (
-            <div className="search-bar">
-                <input type="text" placeholder="Search" />
-                <button><BiSearch /></button>
-            </div>
-        )
-    }
+
+
+   
     
     return (
         <div className="navbar">
             <nav>
             <Link to="/"><h1>Medium</h1></Link> 
             <div className="right-position">
-            {searchBar()}
+            <SearchBar />
             {renderHellper(props.user)}
             </div>
             </nav>
