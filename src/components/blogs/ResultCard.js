@@ -1,14 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import {BlogimageRender,UserAvatarRender} from '../../functions/checkPhoto';
-export default function BlogForYouCard({blog}) {
+import '../../assets/styles/ResultCard.scss'
+const ResultCard = (props) => {
+    const blog = props.blog;
     return (
-        <div className="blogs-for-you-card">
+        <div className="result-card">
            {BlogimageRender(blog)}
-            <div className="blog-card-for-you-content">
+            <div className="result-content">
             <h2><Link to={`/blog/${blog.id}`}>{blog.title}</Link></h2>
             <Link to={`/user/${blog.auther.id}`} >
-            <div className="blog-card-user">
+            <div className="result-card-user">
                 {UserAvatarRender(blog.auther)}
                <h4>{blog.auther.fullname}</h4> 
             </div>
@@ -20,3 +21,5 @@ export default function BlogForYouCard({blog}) {
         </div>
     )
 }
+
+export default ResultCard

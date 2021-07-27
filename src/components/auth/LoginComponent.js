@@ -1,7 +1,8 @@
 import {login} from '../../functions/Api'
 import { useState } from 'react'
 import { connect } from 'react-redux';
-import { getToken } from '../../actions' 
+import { getToken } from '../../actions';
+import {showError} from '../../functions/helpers'
 import '../../assets/styles/auth.scss'
 
 
@@ -9,7 +10,7 @@ const LoginComponent = (props) => {
 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-   
+    const [error,setError] = useState("")
     console.log(props)
     const emailChange = (e) => {
         setEmail(e.target.value)
@@ -20,18 +21,20 @@ const LoginComponent = (props) => {
 
     const handleSubmit = (e) => {
         const getUserToken = props.getToken
+        setError("")
         e.preventDefault();
         login({email, password}).then(res => {
             props.authUser()
             getUserToken(res.data.token)
         }).catch(err=>{
-            console.log(err.response.data.message)
+            setError(err.response.data.message)
         })
     }
     return (
         // <div className="auth-form">
             <form onSubmit={handleSubmit}>
                 <h1 className="text-green">Login</h1>
+                {showError(error)}
                 <label>Email</label>
                 <input onChange={emailChange} type="email" placeholder="email" required />
                 <label>Password</label>

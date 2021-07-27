@@ -23,18 +23,116 @@
 
     .right-position {
         position: absolute;
+        display: flex;
+        align-items: center;
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
     }
 }
+.search-btn {
+    margin-right: 5px;
+    border: none;
+    color: $gray;
+    background:none;
+    cursor: pointer;
+    font-size: 20px;
+}
+.search-btn:hover {
+    color: $black;
+}
 
+.search-bar {
+    border: 1px solid $black;
+    height: 25px;
+    border-radius: 5px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    input,button {
+        border: none;
+        background: none;
+    }
+    button {
+        font-size: 20px;
+        padding-top: 5px;
+        cursor: pointer;
+    }
+    input {
+        padding: 5px;
+        width: 100%;
+    }
+    input:focus{
+        outline: none;
+    }
+}
 .user-box {
- 
-    max-width: 50px;
-
+    display: flex;
+    max-width: 80px;
+    align-items: center;
+    justify-content: space-between;
+    .addblog-link {
+        background-color: $lightgreen;
+        padding: 5px;
+        color: $green !important;
+        border-radius: 5px;
+    }
+    .profile-link {
+        width: 45%;
+    }
      img {
          width: 100%;
          border-radius: 50%;
+     }
+ }
+
+
+ @media only screen and (max-width: $tablets) {
+    .navbar {
+   
+        h1 {
+          
+            left: 20px;
+            top: 50%;
+            transform: translate(-0%,-50%);
+        }
+    
+  
+    }
+ }
+
+ @media only screen and (max-width:  $phones) {
+    .navbar {
+        height: 120px;
+        h1 {
+            left: 50%;
+            top: 10px;
+            transform: translate(-50%,-0%);
+        }
+        .right-position {
+            width: 100%;
+            flex-direction: column;
+            left: 50%;
+            right: auto;
+            top: 50px;
+            transform: translate(-50%,-0%);
+            padding: 5px;
+            .search-bar {
+                margin-right: 0;
+            }
+            .green-btn {
+                font-size: 12px;
+                width: 60px;
+                margin-top: 5px;
+            }
+        }
+  
+    }
+    .user-box {
+
+         img {
+             width: 30px;
+             border-radius: 50%;
+         }
      }
  }

@@ -1,4 +1,5 @@
 import {signup ,getUser} from '../../functions/Api'
+import {showError} from '../../functions/helpers'
 import { useState } from 'react'
 import { connect } from 'react-redux';
 import { getToken , getUserData } from '../../actions' 
@@ -27,16 +28,7 @@ const SignUpComponent = (props) => {
     const passwordconfiChange = (e) => {
         setPasswordconfirmation(e.target.value)
     }
-    const showPasswordError = () =>{
-        if(passwordError){
-            return <p className="alert-danger">{passwordError}</p>
-        }
-    }
-    const showEmailError = () => {
-        if(emailError){
-            return <p className="alert-danger">{emailError}</p>
-        }
-    }
+    
     const validatePassword = () => {
         setPasswordError("")
         if(password.length < 6){
@@ -73,10 +65,10 @@ const SignUpComponent = (props) => {
                 <h1 className="text-green">Sign Up</h1>
                 <label>Full Name</label>
                 <input onChange={fullnameChange} type="text" placeholder="Full Name" required />
-               {showEmailError()}
+               {showError(emailError)}
                 <label>Email</label>
                 <input onChange={emailChange} type="email" placeholder="email" required />
-                {showPasswordError()}
+                {showError(passwordError)}
                 <label>Password</label>
                 <input onChange={passwordChange} type="password" placeholder="password" required />
                 <label>Confirm Password</label>

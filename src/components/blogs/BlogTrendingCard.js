@@ -1,5 +1,6 @@
-import React from 'react'
-import {BlogimageRender} from '../../functions/checkPhoto'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import {BlogimageRender,UserAvatarRender} from '../../functions/checkPhoto'
 export default function BlogTrendingCard({blog,index}) {
 
    
@@ -8,11 +9,13 @@ export default function BlogTrendingCard({blog,index}) {
          <h2 className="text-green">#{index+1}</h2>
        {BlogimageRender(blog)}
        <div className="blog-card-content">
-           <h2>{blog.title}</h2>
+          <Link to={`/blog/${blog.id}`}><h2>{blog.title}</h2></Link> 
+          <Link to={`/user/${blog.auther.id}`}>
           <div className="blog-card-user">
-            <img src={`http://localhost:3000/users/${blog.auther.id}/avatar`} />
+           {UserAvatarRender(blog.auther)}
            <h4>{blog.auther.fullname}</h4> 
-        </div>
+          </div>
+          </Link>
        </div>
         
      

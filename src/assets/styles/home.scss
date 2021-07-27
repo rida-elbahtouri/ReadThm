@@ -32,14 +32,8 @@
     grid-template-columns: repeat(4,1fr);
     grid-gap: 5px;
     margin-top: 20px;
-    .Seemore-link {
-        font-size: 22px;
-        color: $green;
-        text-align: right;
-        align-items: end;
-        display: flex
-    }
-    .blog-card, .Seemore-link {
+    
+    .blog-card {
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
     padding: 10px;
     border-radius: 5px;
@@ -123,7 +117,9 @@
     margin: 30px 0;
     grid-gap: 15px;
     img {
-        width: 100%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
         border-radius: 50%;
         grid-column: 2/4;
         max-height: 180px;
@@ -137,6 +133,7 @@
         align-items: center;
         img{
             width: 100%;
+            height: unset;
             border-radius: 50%;
             grid-column: 1/2;
         }

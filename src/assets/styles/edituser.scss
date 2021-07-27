@@ -1,0 +1,79 @@
+@import './variables.scss';
+
+
+.edit-Profile {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background-color: $lightgreen;
+    padding: 50px;
+    
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+}
+
+.edit-profile-avatar {
+    background-color: $lightgray;
+    text-align: center;
+    padding: 10px;
+
+    img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+    }
+}
+.edituser-form {
+    padding: 20px;
+    background-color: white;
+    font-size: 24px;
+    grid-column: 2/-1;
+    input,label {
+        display: block;
+    }
+    input {
+        margin: 5px 0;
+        width: 100%;
+    }
+    label {
+        padding: 15px 0;
+    }
+}
+.inputWrapper {
+    height: 50px;
+    width: 150px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer !important;
+    background-color: $green;
+     label {
+         margin-top: 25px;
+         transform: translateY(-50%);
+         display: block;
+     }
+}
+.fileInput {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    font-size:24px;
+    opacity: 0;
+}
+@media only screen and (max-width: $tablets) {
+    .edit-Profile {
+        grid-template-columns: 1fr;
+        width: 100%;
+        position: static;
+        display: block;
+        padding: 15px;
+        transform: translate(-0%,-0%);
+        max-width: 100%;
+        width: 100%;
+    }
+}

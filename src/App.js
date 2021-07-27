@@ -3,8 +3,15 @@ import { useState } from 'react';
 
 import AuthUserCompoenent from './components/auth/AuthUser';
 import Home from './components/home';
-import UserProfile from './components/UserProfile';
+import UserProfile from './components/users/UserProfile';
 import NavBar from './components/NavBar';
+import AddingBlog from './components/blogs/AddingBlog';
+import BlogShow from './components/blogs/BlogShow';
+import EditUser from './components/users/EditUser'
+import EditBlog from './components/blogs/EditBlog';
+import ResultPage from './components/ResultPage';
+
+
 function App() {
   const [isActive, setIsActive] = useState(false)
   const authUser = () => {
@@ -25,7 +32,12 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/profile" component={UserProfile} />
+        <Route path="/addblog" component={AddingBlog} />
         <Route path="/user/:id" component={UserProfile} />
+        <Route path="/blog/:id" component={BlogShow} />
+        <Route path="/search/:term" component={ResultPage} />
+        <Route path="/edit/blog/:id" component={EditBlog} />
+        <Route path="/edit/user" component={EditUser} />
       </Switch>
       </div>
     </div>

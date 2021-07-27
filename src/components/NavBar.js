@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'; 
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {getUser} from '../functions/Api';
 import {getUserData} from '../actions';
 import {UserAvatarRender} from '../functions/checkPhoto';
-
-
+import {VscNewFile} from "react-icons/vsc";
 import '../assets/styles/nav.scss'
+import SearchBar from './SearchBar';
 
 
  const NavBar = (props) => {
@@ -21,8 +21,9 @@ import '../assets/styles/nav.scss'
     const renderHellper = (user) => {
         if (user){
             return (
-                <div className="right-position user-box">
-                    <Link to="/profile">
+                 <div className="user-box">
+                    <Link className="addblog-link" title="new blog" to="/addblog"><VscNewFile /></Link>
+                    <Link className="profile-link" to="/profile">
                        {UserAvatarRender(user)}
                     </Link>
                 </div>
@@ -30,19 +31,24 @@ import '../assets/styles/nav.scss'
         }else {
             return(
                 <button onClick={props.authUser}
-                className="btn green-btn right-position">
+                className="btn green-btn">
                 Sign in
                 </button>
             )
         }
     }
-    
+
+
+   
     
     return (
         <div className="navbar">
             <nav>
             <Link to="/"><h1>Medium</h1></Link> 
+            <div className="right-position">
+            <SearchBar />
             {renderHellper(props.user)}
+            </div>
             </nav>
         </div>
     )

@@ -1,8 +1,25 @@
-import React from 'react'
-import BlogCard from './BlogCard'
+import { Link } from 'react-router-dom';
+import BlogCard from './BlogCard';
+import { useState , useEffect } from 'react';
+import { getPopulerblogs } from '../../functions/Api';
 import {BlogimageRender} from '../../functions/checkPhoto'
 
-export default function HeaderBlogs(props) {
+const HeaderBlogs = () => {
+    
+    useEffect(() => {
+        getPopulerblogs()
+        .then((res) => {
+            setPopulerBlogs(res.data)
+        })
+        .catch((err) => console.log(err))
+    },
+    [])
+
+    const [populerBlogs,setPopulerBlogs] = useState(null)
+
+    
+    
+    
     const renderThreeBlogs = (blogs) => {
         const res = blogs.map(blog=>{
             return <BlogCard key={blog.id} blog = {blog} />
@@ -11,13 +28,20 @@ export default function HeaderBlogs(props) {
     }
 
     const renderHelper = (blogs) => {
-        return (
+        if(blogs){
+            return (
         <div>
         <div className="headerblogs">
             <div className="most-readed">
             <div className="blog-content">
+            <Link to={`/blog/${blogs[0].id}`}>
              <h1>{blogs[0].title}</h1>   
-                <span>By : {blogs[0].auther.fullname}</span>  
+             </Link>
+                <span>By : 
+                <Link to={`/user/${blogs[0].auther.id}`}>
+                    {blogs[0].auther.fullname}
+                </Link>
+                </span>  
 
             <p> {blogs[0].content.slice(0,500)}... </p>
             </div>
@@ -25,24 +49,30 @@ export default function HeaderBlogs(props) {
             </div>
             <div className="second-most-readed">
            {BlogimageRender(blogs[1])}
-            <h1>{blogs[1].title}</h1>   
-                <span>By : {blogs[1].auther.fullname}</span>  
+           <Link to={`/blog/${blogs[1].id}`}>
+               <h1>{blogs[1].title}</h1>
+            </Link>   
+                <span>By : 
+                    <Link to={`/user/${blogs[1].auther.id}`}>
+                        {blogs[1].auther.fullname}
+                    </Link>
+                </span>  
 
-            <p> {blogs[1].content} </p>
+            <p> {blogs[1].content.slice(0,350)} </p>
             </div>
         </div>
         <div className="trending-blogs">
-            {renderThreeBlogs(blogs.slice(2))}
-            <div className="Seemore-link">
-                See more -&gt;
-            </div>
+            {renderThreeBlogs(blogs.slice(2,6))}
         </div>
         </div>
         )
+        }
+        
     }
     return (
         <div>
-            {renderHelper(props.blogs)}
+            {renderHelper(populerBlogs)}
         </div>
     )
 }
+export default HeaderBlogs;
