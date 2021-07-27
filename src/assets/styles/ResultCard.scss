@@ -2,9 +2,14 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap: 10px;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
     img {
         width: 100%;
         max-height:300px;
+        object-fit: cover;
     }
 
     .result-content {
