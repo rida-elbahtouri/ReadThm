@@ -1,0 +1,28 @@
+.result-card {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+    img {
+        width: 100%;
+        max-height:300px;
+    }
+
+    .result-content {
+        grid-column: 2/-1;
+
+        .result-card-user {
+            display: flex;
+
+            img {
+                width: 30%;
+                max-width: 70px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            h4 {
+                width: 70%;
+            }
+        }
+    }
+}

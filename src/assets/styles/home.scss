@@ -31,15 +31,9 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 5px;
-    margin-top: 20px;
-    .Seemore-link {
-        font-size: 22px;
-        color: $green;
-        text-align: right;
-        align-items: end;
-        display: flex
-    }
-    .blog-card, .Seemore-link {
+    margin-top: 20px;   
+}
+.blog-card {
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
     padding: 10px;
     border-radius: 5px;
@@ -63,8 +57,6 @@
             border-radius: 50%;
             }
         }
-    }
-   
 }
 .blogs-for-you-trend {
     margin-top: 20px;
@@ -93,12 +85,13 @@
 
         .blog-card-user {
             display: grid;
-            grid-template-columns: repeat(6,1fr);
+            grid-template-columns: 80px repeat(6,1fr);
             grid-gap: 10px;
             margin-top: 10px;
             align-items: center;
             img{
                 width: 100%;
+                max-width: 70px;
                 border-radius: 50%;
             }
             h4 {
