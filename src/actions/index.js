@@ -8,7 +8,7 @@ export const getUserData = user => ({
     payload:user
 })
 
-export const getAllBlogs = blogs => ({
-    type: "GETBLOGS",
+export const SearchForBlogs = blogs => ({
+    type: "GETSEARCHRESULT",
     payload:blogs
 })

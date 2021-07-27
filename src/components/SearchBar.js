@@ -1,8 +1,11 @@
 import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {searchForBlog} from '../functions/Api';
+import { connect } from 'react-redux'; 
+import { SearchForBlogs } from '../actions'; 
 import {BiSearch} from 'react-icons/bi';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
     
     const [searchTerm , setSearchTerm] = useState(null);
 
@@ -10,7 +13,14 @@ const SearchBar = () => {
 
     const searchFor = () => {
         if(searchTerm){
-            history.push(`/search/${searchTerm}`)
+            
+            searchForBlog(searchTerm)
+            .then((res)=>{
+                props.SearchForBlogs(res.data)
+                console.log(res.data)
+                history.push(`/search/${searchTerm}`)
+            })
+            .catch(err=>console.log(err))
         }
     }
     return (
@@ -21,4 +31,12 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar
+
+const mapDispatchToProps = dispatch => ({
+    SearchForBlogs: blogs => {
+      dispatch(SearchForBlogs(blogs));
+    },
+});
+
+
+export default connect(null,mapDispatchToProps)(SearchBar);
