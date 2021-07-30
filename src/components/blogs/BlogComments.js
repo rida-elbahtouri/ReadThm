@@ -1,6 +1,6 @@
 import {getBlogComments} from '../../functions/Api';
 import AddComment from '../AddComment';
-import { useEffect , useState } from 'react';
+import { useEffect , useState} from 'react';
 import CommentCard from './CommentCard';
 
 
@@ -12,17 +12,20 @@ const BlogComments = ({blog_id}) => {
             console.log(e)
         })
     },[])
-    
+ 
     const [comments,setComments] = useState(null)
-    const addCommentToList = (newcomment) => {
-        const newComment = comments
-        newComment.push(newcomment)
-        setComments(newComment)
-        console.log(comments)
-    }
-    const commentsRender = (comments) => {
-        if(comments){
-            const res = comments.map(comment=>(
+   
+    const addCommentToList =(newcomment) => { 
+        const newComments = comments
+        newComments.unshift(newcomment)
+        setComments(null)
+        setComments(newComments)
+    };
+
+    
+    const commentsRender = (mycomments) => {
+        if(mycomments){
+            const res = mycomments.map(comment=>(
                 <CommentCard key={comment.id} comment={comment}  />
             ))
             return res

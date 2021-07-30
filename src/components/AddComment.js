@@ -17,7 +17,7 @@ const AddComment = (props) => {
 
             }).catch(e =>{
                 // add 404 page and redirect to it everytime there is unkown error
-                console.log(e.response.data.message)
+                console.log(e)
             })
         }
     }
