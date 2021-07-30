@@ -2,9 +2,10 @@ import {getBlogComments} from '../../functions/Api';
 import AddComment from '../AddComment';
 import { useEffect , useState} from 'react';
 import CommentCard from './CommentCard';
+import { connect } from "react-redux";
 
-
-const BlogComments = ({blog_id}) => {
+const BlogComments = (props) => {
+    const {blog_id} = props
     useEffect(() => {
         getBlogComments(blog_id).then(res=>{
             setComments(res.data)
@@ -26,17 +27,22 @@ const BlogComments = ({blog_id}) => {
     const commentsRender = (mycomments) => {
         if(mycomments){
             const res = mycomments.map(comment=>(
-                <CommentCard key={comment.id} comment={comment}  />
+                <CommentCard key={comment.id} user={props.user} comment={comment}  />
             ))
             return res
         }
     }
     return (
         <div className="comments-container">
-            <AddComment addCommentToList={addCommentToList} blog_id={blog_id} />
+            <AddComment addCommentToList={addCommentToList} token={props.token} user={props.user} blog_id={blog_id} />
             {commentsRender(comments)}
         </div>
     )
 }
 
-export default BlogComments
+const mapStateToProps = state => ({
+    token: state.Token,
+    user: state.CurrentUser,
+});
+
+export default connect(mapStateToProps)(BlogComments)

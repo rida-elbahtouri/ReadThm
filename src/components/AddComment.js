@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {createComment} from '../functions/Api'
-import { connect } from "react-redux";
+
 const AddComment = (props) => {
     const [comment,setComment] = useState("");
    
@@ -14,9 +14,7 @@ const AddComment = (props) => {
                     fullname:props.user.fullname
                 }
                 props.addCommentToList(comment)
-
             }).catch(e =>{
-                // add 404 page and redirect to it everytime there is unkown error
                 console.log(e)
             })
         }
@@ -33,9 +31,6 @@ const AddComment = (props) => {
         </div>
     )
 }
-const mapStateToProps = state => ({
-    token: state.Token,
-    user: state.CurrentUser,
-});
 
-export default connect(mapStateToProps)(AddComment)
+
+export default AddComment

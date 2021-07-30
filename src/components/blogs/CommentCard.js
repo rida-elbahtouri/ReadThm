@@ -1,7 +1,17 @@
 import {UserAvatarRender} from '../../functions/checkPhoto';
+import {BsTrash} from "react-icons/bs";
 import { Link } from 'react-router-dom';
 const CommentCard = (props) => {
     const {comment} = props
+    const deleteComment = () => {
+        console.log('hi')
+    }
+    const checkIfowner = () => {
+        if(props.user && comment.commenter.id === props.user.id){
+            return <button onClick={deleteComment} className="delete-btn btn"><BsTrash /></button> 
+        }
+    }
+  
     return (
         <div className="comment-card">
             <Link to={`/user/${comment.commenter.id}`}>
@@ -11,6 +21,7 @@ const CommentCard = (props) => {
             <p>
                 {comment.content}
             </p>
+            {checkIfowner()}
         </div>
     )
 }
