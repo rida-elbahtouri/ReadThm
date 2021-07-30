@@ -3,12 +3,10 @@ import {BsTrash} from "react-icons/bs";
 import { Link } from 'react-router-dom';
 const CommentCard = (props) => {
     const {comment} = props
-    const deleteComment = () => {
-        console.log('hi')
-    }
+    console.log(comment)
     const checkIfowner = () => {
         if(props.user && comment.commenter.id === props.user.id){
-            return <button onClick={deleteComment} className="delete-btn btn"><BsTrash /></button> 
+            return <button onClick={()=>props.deleteComment(comment._id)} className="delete-btn btn text-white"><BsTrash /></button> 
         }
     }
   

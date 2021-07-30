@@ -1,4 +1,4 @@
-import {getBlogComments} from '../../functions/Api';
+import {getBlogComments , DeleteComment} from '../../functions/Api';
 import AddComment from '../AddComment';
 import { useEffect , useState} from 'react';
 import CommentCard from './CommentCard';
@@ -23,15 +23,26 @@ const BlogComments = (props) => {
         setComments(newComments)
     };
 
-    
+     const deleteMyCommente = (comment_id)=> {
+        DeleteComment(comment_id,props.token)
+        .then(res=>{
+            console.log(res)
+        })
+        .catch((e) => {
+            console.log(e.response.data.message)
+        })
+    }
+
     const commentsRender = (mycomments) => {
         if(mycomments){
             const res = mycomments.map(comment=>(
-                <CommentCard key={comment.id} user={props.user} comment={comment}  />
+                <CommentCard key={comment.id} deleteComment={deleteMyCommente} user={props.user} comment={comment}  />
             ))
             return res
         }
     }
+
+   
     return (
         <div className="comments-container">
             <AddComment addCommentToList={addCommentToList} token={props.token} user={props.user} blog_id={blog_id} />

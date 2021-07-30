@@ -124,3 +124,11 @@ export const createComment = (content,blog_id,token) => {
         } 
     })
 }
+
+export const DeleteComment = (comment_id,token) => {
+    return Axios.delete(`${baseUrl}/comments/${comment_id}`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
+}
