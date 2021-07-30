@@ -107,3 +107,28 @@ export const deleteUser = (token) => {
         } 
     } )
 }
+
+
+export const getBlogComments = (blog_id) => {
+    return Axios.get(`${baseUrl}/comments/${blog_id}`)
+}
+
+
+export const createComment = (content,blog_id,token) => {
+    return Axios.post(`${baseUrl}/comments/`, {
+        content:content,
+        blog_id:blog_id
+    },{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
+}
+
+export const DeleteComment = (comment_id,token) => {
+    return Axios.delete(`${baseUrl}/comments/${comment_id}`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
+}

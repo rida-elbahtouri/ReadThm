@@ -3,6 +3,7 @@ import {getBlogById} from '../../functions/Api';
 import {BlogimageRender,UserAvatarRender} from '../../functions/checkPhoto';
 import {Link} from 'react-router-dom'
 
+import BlogComments from './BlogComments';
 import '../../assets/styles/blogpage.scss';
 
 
@@ -32,6 +33,8 @@ export default function BlogShow(props) {
                   
                     <p>{blog.content}</p>
                     </div>
+
+                    <BlogComments blog_id={blog.id} />
                 </div>
             )
         }
@@ -40,6 +43,8 @@ export default function BlogShow(props) {
     return (
         <div>
             {renderHelper(blog)}
+
+           
         </div>
     )
 }
