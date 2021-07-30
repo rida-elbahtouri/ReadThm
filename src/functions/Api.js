@@ -107,3 +107,8 @@ export const deleteUser = (token) => {
         } 
     } )
 }
+
+
+export const getBlogComments = (blog_id) => {
+    return Axios.get(`${baseUrl}/comments/${blog_id}`)
+}

@@ -46,3 +46,23 @@
         }
     }
 }
+
+.comment-card {
+    padding: 10px;
+    background-color: white;
+
+    a {
+        display: flex;
+        align-items: center;
+        img {
+            max-width: 70px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h3 {
+            flex-shrink: 100%;
+        }
+    }
+}
