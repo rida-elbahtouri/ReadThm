@@ -46,11 +46,14 @@
         }
     }
 }
-
+.comments-container {
+    background-color: white;
+    padding: 10px;
+}
 .comment-card {
     padding: 10px;
-    background-color: white;
-
+    border:1px solid $lightgray;
+    margin: 10px 0;
     a {
         display: flex;
         align-items: center;
