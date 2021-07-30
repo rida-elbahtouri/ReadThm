@@ -14,6 +14,7 @@ const AddComment = (props) => {
                     fullname:props.user.fullname
                 }
                 props.addCommentToList(comment)
+                document.getElementById('comment-box').value=""
             }).catch(e =>{
                 console.log(e)
             })
@@ -23,7 +24,7 @@ const AddComment = (props) => {
     return (
         <div className="addcomment-form">
             <form onSubmit={CreateComment}>
-                <textarea onChange={e=>setComment(e.target.value)} placeholder="what do you think?">
+                <textarea id="comment-box" onChange={e=>setComment(e.target.value)} placeholder="what do you think?">
 
                 </textarea>
                 <input type="submit" value="Comment" className="green-btn btn" />

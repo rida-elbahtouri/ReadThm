@@ -25,8 +25,10 @@ const BlogComments = (props) => {
 
      const deleteMyCommente = (comment_id)=> {
         DeleteComment(comment_id,props.token)
-        .then(res=>{
-            console.log(res)
+        .then(()=>{
+            const newcomments = comments.filter(comment => comment._id !== comment_id);
+            setComments(null)
+            setComments(newcomments)
         })
         .catch((e) => {
             console.log(e.response.data.message)
@@ -42,10 +44,15 @@ const BlogComments = (props) => {
         }
     }
 
+    const isAllowedToComment = () => {
+        if(props.token){
+            return <AddComment addCommentToList={addCommentToList} token={props.token} user={props.user} blog_id={blog_id} />
+        }
+    }
    
     return (
         <div className="comments-container">
-            <AddComment addCommentToList={addCommentToList} token={props.token} user={props.user} blog_id={blog_id} />
+           {isAllowedToComment()}
             {commentsRender(comments)}
         </div>
     )
