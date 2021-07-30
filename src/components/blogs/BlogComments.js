@@ -14,7 +14,12 @@ const BlogComments = ({blog_id}) => {
     },[])
     
     const [comments,setComments] = useState(null)
-
+    const addCommentToList = (newcomment) => {
+        const newComment = comments
+        newComment.push(newcomment)
+        setComments(newComment)
+        console.log(comments)
+    }
     const commentsRender = (comments) => {
         if(comments){
             const res = comments.map(comment=>(
@@ -25,7 +30,7 @@ const BlogComments = ({blog_id}) => {
     }
     return (
         <div className="comments-container">
-            <AddComment />
+            <AddComment addCommentToList={addCommentToList} blog_id={blog_id} />
             {commentsRender(comments)}
         </div>
     )
