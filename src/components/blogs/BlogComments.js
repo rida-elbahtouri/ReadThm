@@ -1,4 +1,5 @@
 import {getBlogComments} from '../../functions/Api';
+import AddComment from '../AddComment';
 import { useEffect , useState } from 'react';
 import CommentCard from './CommentCard';
 
@@ -24,6 +25,7 @@ const BlogComments = ({blog_id}) => {
     }
     return (
         <div className="comments-container">
+            <AddComment />
             {commentsRender(comments)}
         </div>
     )

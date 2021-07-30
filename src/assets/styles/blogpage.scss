@@ -46,6 +46,23 @@
         }
     }
 }
+.addcomment-form {
+    text-align: right;
+    textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        min-height: 100px;
+        font-size: 20px;
+        padding: 15px;
+        margin-top: 20px;
+        resize: none;
+        
+    }
+
+    textarea:focus{
+        outline: none;
+    }
+}
 .comments-container {
     background-color: white;
     padding: 10px;
