@@ -11,7 +11,7 @@ const LoginComponent = (props) => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [error,setError] = useState("")
-    console.log(props)
+    
     const emailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -26,12 +26,12 @@ const LoginComponent = (props) => {
         login({email, password}).then(res => {
             props.authUser()
             getUserToken(res.data.token)
+            localStorage.setItem("token", res.data.token)
         }).catch(err=>{
             setError(err.response.data.message)
         })
     }
     return (
-        // <div className="auth-form">
             <form onSubmit={handleSubmit}>
                 <h1 className="text-green">Login</h1>
                 {showError(error)}
@@ -45,7 +45,6 @@ const LoginComponent = (props) => {
 
                 <p>You don't have an account want to <span onClick={()=>{props.SwitchForm('signup')}} className="text-green clickable">sign up</span></p>
             </form>
-        // </div>
     )
 }
 

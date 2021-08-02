@@ -1,6 +1,7 @@
 import { Switch ,Route} from 'react-router-dom';
-import { useState } from 'react';
-
+import { useState,useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getToken } from './actions';
 import AuthUserCompoenent from './components/auth/AuthUser';
 import Home from './components/home';
 import UserProfile from './components/users/UserProfile';
@@ -10,10 +11,27 @@ import BlogShow from './components/blogs/BlogShow';
 import EditUser from './components/users/EditUser'
 import EditBlog from './components/blogs/EditBlog';
 import ResultPage from './components/ResultPage';
+import {CheckToken} from './functions/Api'
 
 
-function App() {
+function App(props) {
   const [isActive, setIsActive] = useState(false)
+  
+
+ 
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      CheckToken(localStorage.getItem("token"))
+      .then(()=>{
+        props.getToken(localStorage.getItem("token"))
+      })
+      .catch(()=>{
+        props.getToken(null)
+        localStorage.removeItem('token')
+      })
+    }
+  },[])
+ 
   const authUser = () => {
     setIsActive(!isActive)
    }
@@ -44,4 +62,15 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  token: state.Token,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getToken: token => {
+    dispatch(getToken(token));
+  },
+});
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
