@@ -23,7 +23,7 @@ body {
 }
 
 .none {
-    display: none;
+    display: none !important;
 }
 .alert-danger {
     color: rgb(185, 4, 4);

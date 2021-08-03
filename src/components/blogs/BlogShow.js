@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import {getBlogById} from '../../functions/Api';
-import {BlogimageRender,UserAvatarRender} from '../../functions/checkPhoto';
+import {BlogimageRender,UserAvatarRender,BlogReadImage} from '../../functions/checkPhoto';
 import {Link} from 'react-router-dom'
 
 import BlogComments from './BlogComments';
@@ -29,7 +29,7 @@ export default function BlogShow(props) {
                         <h3>By {blog.auther.fullname}</h3>
                     </Link >
                     <div className="blog-content">
-                    {BlogimageRender(blog)}
+                    {BlogReadImage(blog)}
                   
                     <p>{blog.content}</p>
                     </div>
