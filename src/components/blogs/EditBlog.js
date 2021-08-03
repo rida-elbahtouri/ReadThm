@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import { useState,useEffect } from 'react';
 import UpdateBlogPhoto from './UpdateBlogPhoto'; 
 import {UpdateBlog ,getBlogById} from '../../functions/Api';
-import {showError,showSuccess} from '../../functions/helpers'
+import {showError,showSuccess} from '../../functions/helpers';
+import { Redirect } from 'react-router';
 import '../../assets/styles/editblog.scss'
 
 const EditBlog = (props) => {
@@ -18,7 +19,7 @@ const EditBlog = (props) => {
         console.log(e)
     })
     , []);
-
+    
     const handleSubmit = (e) => {
         e.preventDefault()
         setSuccessMsg("")
@@ -33,23 +34,28 @@ const EditBlog = (props) => {
     }
     const renderHelper = (blog) => {
         if(blog){
-            return(
-                <div className="blogedit-page">
-                    {showSuccess(successMsg)}
-                    {showError(error)}
-                    <UpdateBlogPhoto blog={blog} token={props.token} />
-                   <form onSubmit={handleSubmit} className="blog-form">
-                    <input onChange={(e)=>{setTitle(e.target.value)}}
-                    className="blog-title" type="text" placeholder="blog title" defaultValue={blog.title} />
-                    <textarea
-                    placeholder="blog content"
-                    onChange={(e)=>{setContent(e.target.value)}}
-                    defaultValue={blog.content}
-                    required ></textarea>
-                    <input type="submit" value="Save" className="btn green-btn" />
-                    </form>
-                </div>
-            )
+            if(props.user && blog.auther.id === props.user.id){
+                return(
+                    <div className="blogedit-page">
+                        {showSuccess(successMsg)}
+                        {showError(error)}
+                        <UpdateBlogPhoto blog={blog} token={props.token} />
+                       <form onSubmit={handleSubmit} className="blog-form">
+                        <input onChange={(e)=>{setTitle(e.target.value)}}
+                        className="blog-title" type="text" placeholder="blog title" defaultValue={blog.title} />
+                        <textarea
+                        placeholder="blog content"
+                        onChange={(e)=>{setContent(e.target.value)}}
+                        defaultValue={blog.content}
+                        required ></textarea>
+                        <input type="submit" value="Save" className="btn green-btn" />
+                        </form>
+                    </div>
+                ) 
+            }else {
+                return <Redirect to={`/blog/${blog.id}`} />
+            }
+           
         }
     }
     return (
@@ -61,6 +67,7 @@ const EditBlog = (props) => {
 
 const mapStateToProps = state => ({
     token: state.Token,
+    user:state.CurrentUser
 });
 
 export default connect(mapStateToProps)(EditBlog);
