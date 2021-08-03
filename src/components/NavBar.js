@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'; 
 import { Link } from 'react-router-dom';
 import {getUser} from '../functions/Api';
-import {getUserData} from '../actions';
+import {getUserData,getToken} from '../actions';
 import {UserAvatarRender} from '../functions/checkPhoto';
 import {VscNewFile} from "react-icons/vsc";
+import {FiLogOut} from 'react-icons/fi'
 import '../assets/styles/nav.scss'
 import SearchBar from './SearchBar';
 
@@ -17,6 +18,13 @@ import SearchBar from './SearchBar';
         })
     }
 
+    const Logout = () => {
+        props.getToken(null)
+        props.getUserData(null)
+        if(localStorage.getItem('token')) {
+            localStorage.removeItem('token') 
+        }
+    }
 
     const renderHellper = (user) => {
         if (user){
@@ -26,6 +34,9 @@ import SearchBar from './SearchBar';
                     <Link className="profile-link" to="/profile">
                        {UserAvatarRender(user)}
                     </Link>
+                    <button onClick={Logout}>
+                        <FiLogOut />
+                    </button>
                 </div>
             )
         }else {
@@ -62,6 +73,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getUserData: user => {
       dispatch(getUserData(user));
+    },
+    getToken: token => {
+        dispatch(getToken(token));
     },
 });
 

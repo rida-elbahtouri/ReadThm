@@ -68,7 +68,7 @@
 }
 .user-box {
     display: flex;
-    max-width: 80px;
+    max-width: 120px;
     align-items: center;
     justify-content: space-between;
     .addblog-link {
@@ -80,6 +80,19 @@
     .profile-link {
         width: 45%;
     }
+    button {
+        font-size: 24px;
+        font-weight: bold;
+        color: $green;
+        border: none;
+        background: none;
+        cursor: pointer;
+        margin-left: 5px;
+        padding: 0;
+    }
+    button:hover {
+        color: darken($green,10%);
+    } 
      img {
          width: 100%;
          border-radius: 50%;
@@ -129,7 +142,7 @@
   
     }
     .user-box {
-
+        margin-top: 5px;
          img {
              width: 30px;
              border-radius: 50%;
