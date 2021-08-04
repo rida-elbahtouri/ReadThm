@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-const baseUrl = "http://localhost:3000"
+const baseUrl = "https://blogwithnode.herokuapp.com/"
 
 export const getAllblogs = () => {
     return Axios.get(`${baseUrl}/blogs`)
