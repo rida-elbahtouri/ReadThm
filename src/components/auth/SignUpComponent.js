@@ -47,6 +47,7 @@ const SignUpComponent = (props) => {
              signup({fullname , email, password}).then(res => {
               props.authUser()
               getUserToken(res.data.token)
+              localStorage.setItem("token", res.data.token)
              }).catch(err=>{
              if(err.response.data.message.includes("duplicate key error")){
                 setEmailError("email already exist!! you may want to sign in.")

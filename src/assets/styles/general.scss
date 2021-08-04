@@ -23,7 +23,7 @@ body {
 }
 
 .none {
-    display: none;
+    display: none !important;
 }
 .alert-danger {
     color: rgb(185, 4, 4);
@@ -44,7 +44,15 @@ body {
 .delete-btn {
     background-color: rgb(109, 25, 25);
 }
-
+.delete-btn-2 {
+    color: rgb(109, 25, 25);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.delete-btn-2:hover {
+    color: rgb(83, 22, 22);
+}
 .d-flex{
     display: flex;
 } 

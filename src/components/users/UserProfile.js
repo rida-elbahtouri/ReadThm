@@ -4,9 +4,10 @@ import {UserAvatarRender} from '../../functions/checkPhoto';
 import {BiPencil} from "react-icons/bi";
 import {BsTrash} from "react-icons/bs";
 import { useState ,useEffect } from 'react'; 
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import UserBlogs from './userBlogs';
-
+import {getToken,getUserData} from '../../actions'
 import '../../assets/styles/profile.scss'
 
 const UserProfile =(props)=> {
@@ -37,7 +38,7 @@ const UserProfile =(props)=> {
         getUserBlogs(user.id).then(res =>{
           setUserBlogs(res.data.autherBlogs)
         }).catch(err => {
-          console.log(err.response.message)
+          console.log(err)
         })
        }
 
@@ -51,10 +52,16 @@ const UserProfile =(props)=> {
             console.log(err)
         })
        }
+
+
+       const history = useHistory();
        const deleteProfile = () => {
-        deleteUser(props.token).then(res => {
-          // add redirect method later
-          console.log(res)
+        deleteUser(props.token).then(() => {
+          props.getToken(null)
+          props.getUserData(null)
+          localStorage.removeItem('token')
+          history.push('/')
+
         }).catch(err => {
           console.log(err)
         })
@@ -124,5 +131,12 @@ const mapStateToProps = state => ({
     user: state.CurrentUser
   });
 
-
-export default connect(mapStateToProps)(UserProfile);
+const mapDispatchToProps = dispatch => ({
+    getUserData: user => {
+      dispatch(getUserData(user));
+    },
+    getToken: token => {
+        dispatch(getToken(token));
+    },
+});
+export default connect(mapStateToProps,mapDispatchToProps)(UserProfile);

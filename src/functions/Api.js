@@ -113,7 +113,13 @@ export const getBlogComments = (blog_id) => {
     return Axios.get(`${baseUrl}/comments/${blog_id}`)
 }
 
-
+export const CheckToken = (token) => {
+    return Axios.get(`${baseUrl}/users/checktoken`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        } 
+    })
+}
 export const createComment = (content,blog_id,token) => {
     return Axios.post(`${baseUrl}/comments/`, {
         content:content,
