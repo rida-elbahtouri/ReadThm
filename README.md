@@ -82,3 +82,4 @@ Give a ⭐️ if you like this project!
 - <a href="https://reactjs.org/" target="_blank">React js</a>
 - <a href="https://redux.js.org" target="_blank">Redux JS</a>
 - <a href="https://vercel.com" target="_blanck">Vercel </a> (The WebSite Used To Deploy The App)
+- <a href="https://www.behance.net/gallery/65519803/Medium-A-Comprehensive-Redesign" target="_blank">The Design</a>
