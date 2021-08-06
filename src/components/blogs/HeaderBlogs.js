@@ -58,7 +58,7 @@ const HeaderBlogs = () => {
                     </Link>
                 </span>  
 
-            <p> {blogs[1].content.slice(0,350)} </p>
+            <p> {blogs[1].content.slice(0,250)} </p>
             </div>
         </div>
         <div className="trending-blogs">

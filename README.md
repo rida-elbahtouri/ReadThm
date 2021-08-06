@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# BlogWithNode
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React web app that is connected to my NodeJs backend app.
+it a blog where users can sign up / in, create and edit their blogs, read other's blogs, comment their opinion, and more.
 
-## Available Scripts
+### Live Link
 
-In the project directory, you can run:
+[click here](https://blogwithnode.vercel.app/)
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ScreenShot
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![screenshot](./src/assets/images/Screenshot1.png)
+![screenshot](./src/assets/images/Screenshot2.png)
 
-### `yarn test`
+## Built With
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Redux
+- JSX
+- Sass
+- JavaScript
+- VS Code
+- NPM
+- Axios
 
-### `yarn build`
+## Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You must have a browser on your PC in order to use the application. [Click here](https://www.mozilla.org/en-US/firefox/new/) to download one.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+you must have [NodeJS](https://nodejs.org/en/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `yarn eject`
+1. clone the project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Clone this repository
+$ git https://github.com/rida-elbahtouri/blog_with_Node.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Go into the repository
+$ cd blog_with_Node
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+**You can Install the dependencies with this commands**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+$ npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+### start the app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+$ npm  start
+ # and open the link provided
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Authors
 
-### Making a Progressive Web App
+👤 **Rida Elbahtouri**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Github](https://github.com/rida-elbahtouri)
+- [Twitter](https://twitter.com/RElbahtouri)
+- [Linkedin](https://www.linkedin.com/in/rida-elbahtouri/)
 
-### Advanced Configuration
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributions, issues and feature requests are welcome!
 
-### Deployment
+Feel free to check the <a href="https://github.com/rida-elbahtouri/blog_with_Node/issues" target="_blank">issues page</a>.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Show your support
 
-### `yarn build` fails to minify
+Give a ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+
+- <a href="https://reactjs.org/" target="_blank">React js</a>
+- <a href="https://redux.js.org" target="_blank">Redux JS</a>
+- <a href="https://vercel.com" target="_blanck">Vercel </a> (The WebSite Used To Deploy The App)
