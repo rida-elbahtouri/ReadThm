@@ -1,4 +1,4 @@
-import {getUserById , getUserBlogs , deleteUser,DeleteBlog} from '../../functions/Api';
+import {getUserById , getUserBlogs,getUser , deleteUser,DeleteBlog} from '../../functions/Api';
 import { connect } from 'react-redux'; 
 import {UserAvatarRender} from '../../functions/checkPhoto';
 import {BiPencil} from "react-icons/bi";
@@ -27,8 +27,19 @@ const UserProfile =(props)=> {
        })
 
      }else {
-      setCurrentUser(true)
-      setUser(props.user)
+       const token = localStorage.getItem('token')
+       if(token && !props.user){
+          getUser(token).then(res=>{
+            setUser(res.data)
+            setCurrentUser(true)
+          }).catch(e=>{
+            console.log(e.response)
+          })
+       }else if(props.user) {
+          setCurrentUser(true)
+          setUser(props.user)
+       }
+     
      }
       }, [])
      
