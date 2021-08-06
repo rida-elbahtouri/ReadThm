@@ -36,10 +36,10 @@ you must have [NodeJS](https://nodejs.org/en/)
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/rida-elbahtouri/blog_with_Node.git
+$ git clone https://github.com/rida-elbahtouri/Medium_Redesign.git
 
 # Go into the repository
-$ cd blog_with_Node
+$ cd Medium_Redesign
 
 
 ```
