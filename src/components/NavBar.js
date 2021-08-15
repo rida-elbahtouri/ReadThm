@@ -55,7 +55,7 @@ import SearchBar from './SearchBar';
     return (
         <div className="navbar">
             <nav>
-            <Link to="/"><h1>Medium</h1></Link> 
+            <Link to="/"><h1>ReadThm</h1></Link> 
             <div className="right-position">
             <SearchBar />
             {renderHellper(props.user)}
