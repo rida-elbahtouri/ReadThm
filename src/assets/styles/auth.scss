@@ -6,7 +6,17 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(255, 255, 240, 0.432);
+    background-color: rgba(0, 0, 0, 0.767);
+    .close-btn {
+        color: red;
+        background: none;
+        border: none;
+        font-size: 34px;
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        cursor: pointer;
+    }
     form {
     position: absolute;
     display: flex;

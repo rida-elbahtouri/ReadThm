@@ -19,7 +19,7 @@ export default function AuthUser(props) {
 
     return (
         <div className="auth-form">
-                {Switchto('login')}
+                {Switchto()}
         </div>
     )
 }

@@ -2,6 +2,7 @@ import {signup ,getUser} from '../../functions/Api'
 import {showError} from '../../functions/helpers'
 import { useState } from 'react'
 import { connect } from 'react-redux';
+import {AiOutlineClose} from 'react-icons/ai';
 import { getToken , getUserData } from '../../actions' 
 import '../../assets/styles/auth.scss'
 import { useHistory } from 'react-router';
@@ -63,6 +64,7 @@ const SignUpComponent = (props) => {
     }
     return (
             <form onSubmit={handleSubmit}>
+                <button onClick={()=>{props.authUser()}} className="close-btn"><AiOutlineClose /></button>
                 <h1 className="text-green">Sign Up</h1>
                 <label>Full Name</label>
                 <input onChange={fullnameChange} type="text" placeholder="Full Name" required />
@@ -75,9 +77,6 @@ const SignUpComponent = (props) => {
                 <label>Confirm Password</label>
                 <input onChange={passwordconfiChange} type="password" placeholder="password confirmation" required />
                 <input type="submit" className="green-btn btn" value="Sign up" />
-
-                <p className="sub-text fs-5">Click “Sign Up” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</p>
-
                 <p>Already have an account <span onClick={()=>{props.SwitchForm('login')}} className="text-green clickable">sign in</span></p>
             </form>
     )

@@ -1,8 +1,10 @@
 import {login} from '../../functions/Api'
 import { useState } from 'react'
 import { connect } from 'react-redux';
+import {AiOutlineClose} from 'react-icons/ai';
 import { getToken } from '../../actions';
-import {showError} from '../../functions/helpers'
+import {showError} from '../../functions/helpers';
+
 import '../../assets/styles/auth.scss'
 
 
@@ -33,6 +35,7 @@ const LoginComponent = (props) => {
     }
     return (
             <form onSubmit={handleSubmit}>
+                <button onClick={()=>{props.authUser()}} className="close-btn"><AiOutlineClose /></button>
                 <h1 className="text-green">Login</h1>
                 {showError(error)}
                 <label>Email</label>
@@ -41,9 +44,7 @@ const LoginComponent = (props) => {
                 <input onChange={passwordChange} type="password" placeholder="password" required />
                 <input type="submit" className="green-btn btn" value="Sign in" />
 
-                <p className="sub-text fs-5">Click “Sign In” to agree to Medium’s Terms of Service and acknowledge that Medium’s Privacy Policy applies to you.</p>
-
-                <p>You don't have an account want to <span onClick={()=>{props.SwitchForm('signup')}} className="text-green clickable">sign up</span></p>
+                <p>You don't have an account <span onClick={()=>{props.SwitchForm('signup')}} className="text-green clickable">sign up</span></p>
             </form>
     )
 }
