@@ -28,7 +28,7 @@ const LoginComponent = (props) => {
             getUserToken(res.data.token)
             localStorage.setItem("token", res.data.token)
         }).catch(err=>{
-            setError(err.response.data.message)
+            setError(err)
         })
     }
     return (

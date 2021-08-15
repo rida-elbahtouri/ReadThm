@@ -38,11 +38,27 @@
     padding: 10px;
     border-radius: 5px;
     }
+    .blog-card:nth-child(odd){
+        background-color: $lightgray;
+
+        h2 {
+            color: $green;
+        }
+    }
+    .blog-card:nth-child(even){
+        h2 {
+            color: $lightgray;
+        }
+        background-color: $green;
+    }
     .blog-card-header {
         display: flex;
         align-items: center;
         .card-header {
             width: 79%;
+            span {
+                text-transform: capitalize;
+            }
         }
         h2 {
             border-bottom: 1px solid black;

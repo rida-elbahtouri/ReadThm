@@ -34,7 +34,7 @@ import SearchBar from './SearchBar';
                     <Link className="profile-link" to="/profile">
                        {UserAvatarRender(user)}
                     </Link>
-                    <button onClick={Logout}>
+                    <button title="Log out" onClick={Logout}>
                         <FiLogOut />
                     </button>
                 </div>
