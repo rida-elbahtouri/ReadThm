@@ -1,4 +1,4 @@
-# BlogWithNode
+# ReadThm
 
 This project is a React web app that is connected to my NodeJs backend app.
 it a blog where users can sign up / in, create and edit their blogs, read other's blogs, comment their opinion, and more.
