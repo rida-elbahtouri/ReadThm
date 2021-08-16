@@ -18,7 +18,7 @@ export const UserAvatarRender=(user)=> {
     const addDefaultSrc =(ev)=> {
         ev.target.src = 'https://via.placeholder.com/150?text=Avatar'
     }
-    return <img src={`${baseUrl}/users/${user.id}/avatar`}
+    return <img id="user-avatar" src={`${baseUrl}/users/${user.id}/avatar`}
     onError={addDefaultSrc} />
 }
 export const isPhotoValid = (photo) => {
