@@ -34,7 +34,7 @@ import SearchBar from './SearchBar';
                     <Link className="profile-link" to="/profile">
                        {UserAvatarRender(user)}
                     </Link>
-                    <button onClick={Logout}>
+                    <button title="Log out" onClick={Logout}>
                         <FiLogOut />
                     </button>
                 </div>
@@ -55,7 +55,7 @@ import SearchBar from './SearchBar';
     return (
         <div className="navbar">
             <nav>
-            <Link to="/"><h1>Medium</h1></Link> 
+            <Link to="/"><h1>ReadThm</h1></Link> 
             <div className="right-position">
             <SearchBar />
             {renderHellper(props.user)}

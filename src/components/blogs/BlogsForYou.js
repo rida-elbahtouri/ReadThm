@@ -1,4 +1,4 @@
-import {getHotblogs} from '../../functions/Api';
+import {getHotblogs, getNewblogs} from '../../functions/Api';
 import { useState, useEffect } from 'react';
 import BlogsForYouCard from './BlogForYouCard'
 
@@ -8,7 +8,14 @@ const BlogsForYou = () => {
     useEffect(() => {
         getHotblogs()
         .then((res) => {
-            setHotBlogs(res.data)
+            if(res.data && res.data.length < 5){
+                getNewblogs().then((res)=>{
+                    setHotBlogs(res.data) 
+                } )
+            }else {
+               setHotBlogs(res.data) 
+            }
+            
         })
         .catch((err) => console.log(err))
     },

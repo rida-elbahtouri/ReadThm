@@ -43,9 +43,16 @@ const UserProfile =(props)=> {
      }
       }, [])
      
-     const [userBlogs , setUserBlogs] = useState([])
+      const AddAvatarWarning = () => {
+         if(currentUser
+          && document.getElementById("user-avatar").src === "https://via.placeholder.com/150?text=Avatar" ){
+            return <p className="alert-warning">Please add an profile picture by clicking on <BiPencil /> icon</p>
+         }
+       }
+
+     const [userBlogs , setUserBlogs] = useState(null)
      
-       if(user && userBlogs.length === 0){
+       if(user && !userBlogs){
         getUserBlogs(user.id).then(res =>{
           setUserBlogs(res.data.autherBlogs)
         }).catch(err => {
@@ -88,12 +95,14 @@ const UserProfile =(props)=> {
          }
        }
       const renderBlogs= (blogs) => {
-        const result = blogs.map(blog=>{
+        if(blogs){
+          const result = blogs.map(blog=>{
           return (
-            <UserBlogs blog={blog} deletemyblog={deletemyblog} />
+            <UserBlogs key={blog.id} blog={blog} deletemyblog={deletemyblog} />
           )
         })
         return result;
+        }
       }
      const renderIfUser = (user) => {
        if(user){
@@ -116,8 +125,9 @@ const UserProfile =(props)=> {
           </div>
 
           <div className="user-blogs-section">
+          {AddAvatarWarning()}
           <p className="text-green fs-4">
-            Blogs number : {userBlogs.length}
+            Blogs number : {userBlogs ? userBlogs.length : 0}
           </p>
 
           <div className="user-blogs">

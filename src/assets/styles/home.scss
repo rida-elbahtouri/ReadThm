@@ -8,7 +8,9 @@
         width: 69%;
         display: flex;
         justify-content: space-between;
-
+        border: 1px solid $lightgray;
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.6);
+        overflow: hidden;
         .blog-content {
             width: 39%;
             padding: 5px;
@@ -19,7 +21,7 @@
     }
     .second-most-readed {
         width: 29%;
-
+        overflow: hidden;
         img {
             width: 100%;
             max-height:200px;
@@ -38,11 +40,27 @@
     padding: 10px;
     border-radius: 5px;
     }
+    .blog-card:nth-child(odd){
+        background-color: $lightgray;
+
+        h2 {
+            color: $green;
+        }
+    }
+    .blog-card:nth-child(even){
+        h2 {
+            color: $lightgray;
+        }
+        background-color: $green;
+    }
     .blog-card-header {
         display: flex;
         align-items: center;
         .card-header {
             width: 79%;
+            span {
+                text-transform: capitalize;
+            }
         }
         h2 {
             border-bottom: 1px solid black;
@@ -104,6 +122,7 @@
 
 .trending-blogs-cards {
     border: 1px solid $lightgray;
+    
     h1 {
         background-color: $lightgreen;
         padding: 30px;
@@ -116,6 +135,7 @@
     align-items: center;
     margin: 30px 0;
     grid-gap: 15px;
+    padding: 0 15px;
     img {
         width: 150px;
         height: 150px;

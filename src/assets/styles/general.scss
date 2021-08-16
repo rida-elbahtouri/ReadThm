@@ -1,9 +1,17 @@
 @import './variables.scss';
 @import './helpers/btns.scss';
 @import './helpers/general.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&family=Saira+Condensed:wght@300;500&display=swap');
 
 
 
+h1,h2,h3 {
+    font-family: 'Saira Condensed', sans-serif;
+}
+
+p,span,label {
+    font-family: 'Roboto', sans-serif;
+}
 
 body {
     margin: 0;
@@ -31,7 +39,12 @@ body {
     padding: 5px;
     border-radius: 5px;
 }
-
+.alert-warning {
+    color: #856404;
+    background-color: #FFF3CD;
+    padding: 10px;
+    border-radius: 5px;
+}
 .alert-success {
     color: #155724;
     background-color: #d4edda;

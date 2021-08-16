@@ -2,7 +2,7 @@ import Axios from 'axios'
 
 export const baseUrl = "https://blogwithnode.herokuapp.com"
 
-export const getAllblogs = () => {
+export const getNewblogs = () => {
     return Axios.get(`${baseUrl}/blogs`)
 }
 
