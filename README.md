@@ -36,7 +36,7 @@ you must have [NodeJS](https://nodejs.org/en/)
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/rida-elbahtouri/Medium_Redesign.git
+$ git clone https://github.com/rida-elbahtouri/ReadThm.git
 
 # Go into the repository
 $ cd Medium_Redesign
@@ -71,7 +71,7 @@ $ npm  start
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the <a href="https://github.com/rida-elbahtouri/blog_with_Node/issues" target="_blank">issues page</a>.
+Feel free to check the <a href="https://github.com/rida-elbahtouri/ReadThm/issues" target="_blank">issues page</a>.
 
 ## Show your support
 
